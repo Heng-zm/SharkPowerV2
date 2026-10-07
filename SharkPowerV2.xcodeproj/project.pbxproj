@@ -329,12 +329,28 @@
 		60010006 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				60010020 /* Models */,
+				60010021 /* Persistence */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		60010020 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				20010031 /* SavedPreset.swift */,
 				20010032 /* KnownDevice.swift */,
 				20010052 /* AppSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60010021 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
 				20010033 /* ModelContainer.swift */,
 			);
-			path = Data;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		60010007 /* DesignSystem */ = {
@@ -344,12 +360,20 @@
 				20010004 /* Typography.swift */,
 				20010005 /* Spacing.swift */,
 				20010006 /* Haptics.swift */,
+				60010022 /* Components */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		60010022 /* Components */ = {
+			isa = PBXGroup;
+			children = (
 				20010007 /* AutomotiveCard.swift */,
 				20010008 /* StatusBadge.swift */,
 				20010009 /* GlowSlider.swift */,
 				20010010 /* ActionButton.swift */,
 			);
-			path = DesignSystem;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		60010008 /* Resources */ = {
@@ -364,14 +388,46 @@
 		60020001 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				20020001 /* LEDAnimationTests.swift */,
-				20020002 /* BLEScannerTests.swift */,
-				20020003 /* BLECommandQueueTests.swift */,
-				20020004 /* SharkPowerProtocolTests.swift */,
-				20020005 /* HomeViewModelTests.swift */,
-				20020006 /* SimulationModeTests.swift */,
+				60020011 /* AnimationTests */,
+				60020012 /* BLETests */,
+				60020013 /* ProtocolTests */,
+				60020014 /* ViewModelTests */,
 			);
 			path = SharkPowerV2/Tests;
+			sourceTree = "<group>";
+		};
+		60020011 /* AnimationTests */ = {
+			isa = PBXGroup;
+			children = (
+				20020001 /* LEDAnimationTests.swift */,
+			);
+			path = AnimationTests;
+			sourceTree = "<group>";
+		};
+		60020012 /* BLETests */ = {
+			isa = PBXGroup;
+			children = (
+				20020002 /* BLEScannerTests.swift */,
+				20020003 /* BLECommandQueueTests.swift */,
+				20020006 /* SimulationModeTests.swift */,
+			);
+			path = BLETests;
+			sourceTree = "<group>";
+		};
+		60020013 /* ProtocolTests */ = {
+			isa = PBXGroup;
+			children = (
+				20020004 /* SharkPowerProtocolTests.swift */,
+			);
+			path = ProtocolTests;
+			sourceTree = "<group>";
+		};
+		60020014 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				20020005 /* HomeViewModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 		60030001 /* Products */ = {
