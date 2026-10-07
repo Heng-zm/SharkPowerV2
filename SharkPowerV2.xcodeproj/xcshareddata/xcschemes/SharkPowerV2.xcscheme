@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "40010001"
+               BlueprintIdentifier = "4A010001"
                BuildableName = "SharkPowerV2.app"
                BlueprintName = "SharkPowerV2"
                ReferencedContainer = "container:SharkPowerV2.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "40020001"
+               BlueprintIdentifier = "4A020001"
                BuildableName = "SharkPowerV2Tests.xctest"
                BlueprintName = "SharkPowerV2Tests"
                ReferencedContainer = "container:SharkPowerV2.xcodeproj">
@@ -54,7 +54,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "40010001"
+            BlueprintIdentifier = "4A010001"
             BuildableName = "SharkPowerV2.app"
             BlueprintName = "SharkPowerV2"
             ReferencedContainer = "container:SharkPowerV2.xcodeproj">
@@ -71,7 +71,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "40010001"
+            BlueprintIdentifier = "4A010001"
             BuildableName = "SharkPowerV2.app"
             BlueprintName = "SharkPowerV2"
             ReferencedContainer = "container:SharkPowerV2.xcodeproj">

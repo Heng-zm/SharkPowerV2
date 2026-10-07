@@ -67,18 +67,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		30010001 /* PBXContainerItemProxy */ = {
+		3A010001 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00010001 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 40010001;
+			remoteGlobalIDString = 4A010001;
 			remoteInfo = SharkPowerV2;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		40010001 /* SharkPowerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharkPowerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		40020001 /* SharkPowerV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharkPowerV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F010001 /* SharkPowerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharkPowerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F020001 /* SharkPowerV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharkPowerV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20010001 /* SharkPowerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerApp.swift; sourceTree = "<group>"; };
 		20010002 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		20010003 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		20010013 /* ForwardAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardAnimation.swift; sourceTree = "<group>"; };
 		20010014 /* ReverseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAnimation.swift; sourceTree = "<group>"; };
 		20010015 /* TrailingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingAnimation.swift; sourceTree = "<group>"; };
-		20010016 /* ChasingAnimation.swift in Sources */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChasingAnimation.swift; sourceTree = "<group>"; };
+		20010016 /* ChasingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChasingAnimation.swift; sourceTree = "<group>"; };
 		20010017 /* LEDCanvasRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDCanvasRenderer.swift; sourceTree = "<group>"; };
 		20010018 /* LEDPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDPreviewView.swift; sourceTree = "<group>"; };
 		20010019 /* FullScreenPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPreviewView.swift; sourceTree = "<group>"; };
@@ -377,8 +377,8 @@
 		60030001 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				40010001 /* SharkPowerV2.app */,
-				40020001 /* SharkPowerV2Tests.xctest */,
+				4F010001 /* SharkPowerV2.app */,
+				4F020001 /* SharkPowerV2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -386,7 +386,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		40010001 /* SharkPowerV2 */ = {
+		4A010001 /* SharkPowerV2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70010001 /* Build configuration list for PBXNativeTarget "SharkPowerV2" */;
 			buildPhases = (
@@ -400,10 +400,10 @@
 			);
 			name = SharkPowerV2;
 			productName = SharkPowerV2;
-			productReference = 40010001 /* SharkPowerV2.app */;
+			productReference = 4F010001 /* SharkPowerV2.app */;
 			productType = "com.apple.product-type.application";
 		};
-		40020001 /* SharkPowerV2Tests */ = {
+		4A020001 /* SharkPowerV2Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70020001 /* Build configuration list for PBXNativeTarget "SharkPowerV2Tests" */;
 			buildPhases = (
@@ -413,11 +413,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				30010002 /* PBXTargetDependency */,
+				3A010002 /* PBXTargetDependency */,
 			);
 			name = SharkPowerV2Tests;
 			productName = SharkPowerV2Tests;
-			productReference = 40020001 /* SharkPowerV2Tests.xctest */;
+			productReference = 4F020001 /* SharkPowerV2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -429,12 +429,12 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					40010001 = {
+					4A010001 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					40020001 = {
+					4A020001 = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 40010001;
+						TestTargetID = 4A010001;
 					};
 				};
 			};
@@ -451,8 +451,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				40010001 /* SharkPowerV2 */,
-				40020001 /* SharkPowerV2Tests */,
+				4A010001 /* SharkPowerV2 */,
+				4A020001 /* SharkPowerV2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -542,10 +542,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		30010002 /* PBXTargetDependency */ = {
+		3A010002 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 40010001 /* SharkPowerV2 */;
-			targetProxy = 30010001 /* PBXContainerItemProxy */;
+			target = 4A010001 /* SharkPowerV2 */;
+			targetProxy = 3A010001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
