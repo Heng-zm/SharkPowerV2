@@ -27,6 +27,11 @@ public struct SharkPowerProtocolConfig: Equatable {
         serviceUUID != nil && writeCharacteristicUUID != nil
     }
 
+    /// Indicates whether the protocol remains unverified pending hardware capture.
+    public var isPendingVerification: Bool {
+        !isVerified
+    }
+
     /// Default unverified configuration strictly adhering to "Do Not Guess" policy.
     public static let unverified = SharkPowerProtocolConfig(
         serviceUUID: nil,

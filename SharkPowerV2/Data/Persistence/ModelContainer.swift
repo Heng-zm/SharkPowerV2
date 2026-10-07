@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+@MainActor
 public enum SharkModelContainer {
     public static func create(inMemory: Bool = false) -> ModelContainer {
         let schema = Schema([

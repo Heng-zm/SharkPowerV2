@@ -48,5 +48,6 @@ final class SharkPowerProtocolTests: XCTestCase {
         XCTAssertNil(config.writeCharacteristicUUID)
         XCTAssertNil(config.notifyCharacteristicUUID)
         XCTAssertFalse(config.isVerified)
+        XCTAssertTrue(config.isPendingVerification)
     }
 }
