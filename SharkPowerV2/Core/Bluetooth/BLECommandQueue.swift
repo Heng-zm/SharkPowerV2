@@ -26,13 +26,13 @@ public actor BLECommandQueue {
     private var pendingQueue: [QueuedCommand] = []
     private var isProcessing: Bool = false
     private let defaultTimeout: TimeInterval = 2.0
-    private weak var gattClient: BLEGATTClient?
+    private weak var gattClient: BLEGATTClientProtocol?
 
-    public init(gattClient: BLEGATTClient?) {
+    public init(gattClient: BLEGATTClientProtocol?) {
         self.gattClient = gattClient
     }
 
-    public func setGATTClient(_ client: BLEGATTClient?) {
+    public func setGATTClient(_ client: BLEGATTClientProtocol?) {
         self.gattClient = client
     }
 

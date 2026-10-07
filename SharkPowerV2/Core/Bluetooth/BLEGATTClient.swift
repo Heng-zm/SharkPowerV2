@@ -8,7 +8,7 @@
 import Foundation
 import CoreBluetooth
 
-public final class BLEGATTClient: NSObject, ObservableObject, BLEGATTClient {
+public final class BLEGATTClient: NSObject, ObservableObject, BLEGATTClientProtocol {
     @Published public private(set) var discoveredServices: [CBService] = []
     @Published public private(set) var discoveredCharacteristics: [CBCharacteristic] = []
 
