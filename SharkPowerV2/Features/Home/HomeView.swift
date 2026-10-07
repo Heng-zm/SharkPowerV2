@@ -113,7 +113,7 @@ public struct HomeView: View {
                                 GlowSlider(
                                     title: "Slide Travel Speed",
                                     systemImage: "gauge.with.dots.needle.50percent",
-                                    value: $viewModel.parameters.speed,
+                                    value: $viewModel.draftState.parameters.speed,
                                     tintColor: viewModel.parameters.color
                                 )
 
@@ -122,7 +122,7 @@ public struct HomeView: View {
                                 GlowSlider(
                                     title: "Luminous Brightness",
                                     systemImage: "sun.max.fill",
-                                    value: $viewModel.parameters.brightness,
+                                    value: $viewModel.draftState.parameters.brightness,
                                     tintColor: viewModel.parameters.color
                                 )
                             }
@@ -187,15 +187,15 @@ public struct HomeView: View {
             }
             .navigationBarHidden(true)
             .sheet(isPresented: $viewModel.showColorPicker) {
-                ColorPickerSheet(selectedColor: $viewModel.parameters.color)
+                ColorPickerSheet(selectedColor: $viewModel.draftState.parameters.color)
             }
             .sheet(isPresented: $viewModel.showModeSheet) {
-                ModeSelectionSheet(selectedMode: $viewModel.selectedMode, parameters: viewModel.parameters)
+                ModeSelectionSheet(selectedMode: $viewModel.draftState.mode, parameters: viewModel.parameters)
             }
             .fullScreenCover(isPresented: $viewModel.showFullScreenPreview) {
                 FullScreenPreviewView(
-                    mode: $viewModel.selectedMode,
-                    parameters: $viewModel.parameters,
+                    mode: $viewModel.draftState.mode,
+                    parameters: $viewModel.draftState.parameters,
                     isApplying: viewModel.applyState.isApplying,
                     onApply: {
                         viewModel.applyToDevice()

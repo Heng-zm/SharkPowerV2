@@ -90,7 +90,7 @@ public struct SettingsView: View {
                             showLogsSheet = true
                         }) {
                             HStack {
-                                Text("View Connection Logs")
+                                Text("Engineering Diagnostics")
                                     .foregroundStyle(SharkTheme.neonCyan)
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -132,7 +132,7 @@ public struct SettingsView: View {
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showLogsSheet) {
-                logsConsoleSheet
+                DiagnosticsView()
             }
         }
     }

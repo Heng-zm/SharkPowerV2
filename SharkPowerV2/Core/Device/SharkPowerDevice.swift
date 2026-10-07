@@ -27,7 +27,7 @@ public final class SharkPowerDevice: ObservableObject {
         scanner: BLEScanner = BLEScanner(),
         connection: BLEConnection = BLEConnection(),
         gattClient: BLEGATTClient = BLEGATTClient(),
-        hardwareProtocol: SharkPowerProtocol = SharkPowerProtocol()
+        hardwareProtocol: SharkPowerProtocol = DefaultSharkPowerProtocol()
     ) {
         self.scanner = scanner
         self.connection = connection
@@ -36,7 +36,7 @@ public final class SharkPowerDevice: ObservableObject {
         self.commandQueue = BLECommandQueue(gattClient: gattClient)
 
         setupSubscriptions()
-        log("SharkPowerDevice initialized. Protocol isPendingVerification: \(hardwareProtocol.config.isPendingVerification)")
+        log("SharkPowerDevice initialized. Protocol isVerified: \(hardwareProtocol.config.isVerified)")
     }
 
     private func setupSubscriptions() {
@@ -68,15 +68,12 @@ public final class SharkPowerDevice: ObservableObject {
         connection.disconnect()
     }
 
-    /// Sends the complete lighting configuration to the connected device upon tapping APPLY.
     public func applyConfiguration(
         mode: LEDMode,
         color: Color,
         brightness: Double,
         speed: Double
     ) async throws {
-        log("Applying configuration: Mode=\(mode.rawValue), Brightness=\(Int(brightness*100))%, Speed=\(Int(speed*100))%")
-
         let command = LightingCommand.setFullConfiguration(
             mode: mode,
             color: color,
@@ -84,11 +81,38 @@ public final class SharkPowerDevice: ObservableObject {
             speed: speed
         )
 
+        if SimulationManager.shared.isEnabled {
+            log("SIMULATION: Dispatching configuration to simulated device")
+            try await withCheckedThrowingContinuation { continuation in
+                SimulationManager.shared.simulateApply(command: command) { result in
+                    switch result {
+                    case .success(let resp):
+                        self.log("SIMULATION: \(resp.description)")
+                        continuation.resume()
+                    case .failure(let err):
+                        self.log("SIMULATION ERROR: \(err.localizedDescription)")
+                        continuation.resume(throwing: err)
+                    }
+                }
+            }
+            return
+        }
+
+        // Live Hardware Path
+        log("Applying configuration to physical Shark Power hardware...")
+        guard hardwareProtocol.config.isVerified else {
+            log("BLOCKED: Hardware protocol is TBD. Unverified packet dispatch prevented.")
+            throw SharkPowerProtocolError.unverifiedProtocol
+        }
+
         let encodedData = try hardwareProtocol.encode(command)
+        guard let writeUUID = hardwareProtocol.config.writeCharacteristicUUID else {
+            throw SharkPowerProtocolError.unverifiedProtocol
+        }
 
         await commandQueue.enqueue(
             data: encodedData,
-            characteristicUUID: hardwareProtocol.config.writeCharacteristicUUID,
+            characteristicUUID: writeUUID,
             deduplicationKey: command.deduplicationKey,
             requiresResponse: false
         )

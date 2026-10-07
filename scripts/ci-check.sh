@@ -20,6 +20,10 @@ REQUIRED_FILES=(
     "SharkPowerV2/Core/Bluetooth/BLEConnection.swift"
     "SharkPowerV2/Core/Bluetooth/BLECommandQueue.swift"
     "SharkPowerV2/Core/Device/SharkPowerProtocol.swift"
+    "SharkPowerV2/Core/Device/SharkPowerProtocolConfig.swift"
+    "SharkPowerV2/Core/Simulation/FakeBLEDevice.swift"
+    "SharkPowerV2/Core/Simulation/SimulationManager.swift"
+    "SharkPowerV2/Features/Home/DraftLightingState.swift"
     "SharkPowerV2/Features/Preview/LEDPreviewView.swift"
     "SharkPowerV2/Features/Preview/LEDCanvasRenderer.swift"
     "SharkPowerV2/Features/Preview/ForwardAnimation.swift"
@@ -30,6 +34,7 @@ REQUIRED_FILES=(
     "SharkPowerV2/Features/Devices/DevicesView.swift"
     "SharkPowerV2/Features/Presets/PresetsView.swift"
     "SharkPowerV2/Features/Settings/SettingsView.swift"
+    "SharkPowerV2/Features/Diagnostics/DiagnosticsView.swift"
     "SharkPowerV2/Resources/Info.plist"
     "ExportOptions.plist"
 )

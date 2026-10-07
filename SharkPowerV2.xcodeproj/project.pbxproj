@@ -51,11 +51,19 @@
 		10010042 /* ColorPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010042 /* ColorPickerSheet.swift */; };
 		10010043 /* ModeSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010043 /* ModeSelectionSheet.swift */; };
 		10010044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20010044 /* Assets.xcassets */; };
+		10010045 /* SharkPowerProtocolConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010046 /* SharkPowerProtocolConfig.swift */; };
+		10010046 /* FakeBLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010047 /* FakeBLEDevice.swift */; };
+		10010047 /* SimulationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010048 /* SimulationManager.swift */; };
+		10010048 /* DraftLightingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010049 /* DraftLightingState.swift */; };
+		10010049 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010050 /* DiagnosticsView.swift */; };
+		10010050 /* DiagnosticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010051 /* DiagnosticsViewModel.swift */; };
+		10010051 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010052 /* AppSettings.swift */; };
 		10020001 /* LEDAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020001 /* LEDAnimationTests.swift */; };
 		10020002 /* BLEScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020002 /* BLEScannerTests.swift */; };
 		10020003 /* BLECommandQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020003 /* BLECommandQueueTests.swift */; };
 		10020004 /* SharkPowerProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020004 /* SharkPowerProtocolTests.swift */; };
 		10020005 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020005 /* HomeViewModelTests.swift */; };
+		10020006 /* SimulationModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020006 /* SimulationModeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +94,7 @@
 		20010013 /* ForwardAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardAnimation.swift; sourceTree = "<group>"; };
 		20010014 /* ReverseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAnimation.swift; sourceTree = "<group>"; };
 		20010015 /* TrailingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingAnimation.swift; sourceTree = "<group>"; };
-		20010016 /* ChasingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChasingAnimation.swift; sourceTree = "<group>"; };
+		20010016 /* ChasingAnimation.swift in Sources */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChasingAnimation.swift; sourceTree = "<group>"; };
 		20010017 /* LEDCanvasRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDCanvasRenderer.swift; sourceTree = "<group>"; };
 		20010018 /* LEDPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDPreviewView.swift; sourceTree = "<group>"; };
 		20010019 /* FullScreenPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPreviewView.swift; sourceTree = "<group>"; };
@@ -116,11 +124,19 @@
 		20010043 /* ModeSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionSheet.swift; sourceTree = "<group>"; };
 		20010044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20010045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20010046 /* SharkPowerProtocolConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerProtocolConfig.swift; sourceTree = "<group>"; };
+		20010047 /* FakeBLEDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeBLEDevice.swift; sourceTree = "<group>"; };
+		20010048 /* SimulationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationManager.swift; sourceTree = "<group>"; };
+		20010049 /* DraftLightingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftLightingState.swift; sourceTree = "<group>"; };
+		20010050 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
+		20010051 /* DiagnosticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsViewModel.swift; sourceTree = "<group>"; };
+		20010052 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		20020001 /* LEDAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDAnimationTests.swift; sourceTree = "<group>"; };
 		20020002 /* BLEScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScannerTests.swift; sourceTree = "<group>"; };
 		20020003 /* BLECommandQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLECommandQueueTests.swift; sourceTree = "<group>"; };
 		20020004 /* SharkPowerProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerProtocolTests.swift; sourceTree = "<group>"; };
 		20020005 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		20020006 /* SimulationModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationModeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +193,7 @@
 			children = (
 				60010009 /* Bluetooth */,
 				60010010 /* Device */,
+				60010018 /* Simulation */,
 				60010011 /* Errors */,
 			);
 			path = Core;
@@ -201,9 +218,19 @@
 			children = (
 				20010027 /* LightingCommand.swift */,
 				20010028 /* SharkPowerProtocol.swift */,
+				20010046 /* SharkPowerProtocolConfig.swift */,
 				20010029 /* SharkPowerDevice.swift */,
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		60010018 /* Simulation */ = {
+			isa = PBXGroup;
+			children = (
+				20010047 /* FakeBLEDevice.swift */,
+				20010048 /* SimulationManager.swift */,
+			);
+			path = Simulation;
 			sourceTree = "<group>";
 		};
 		60010011 /* Errors */ = {
@@ -222,6 +249,7 @@
 				60010014 /* Devices */,
 				60010015 /* Presets */,
 				60010016 /* Settings */,
+				60010019 /* Diagnostics */,
 				60010017 /* Sheets */,
 			);
 			path = Features;
@@ -230,6 +258,7 @@
 		60010012 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				20010049 /* DraftLightingState.swift */,
 				20010034 /* HomeViewModel.swift */,
 				20010035 /* HomeView.swift */,
 			);
@@ -279,6 +308,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		60010019 /* Diagnostics */ = {
+			isa = PBXGroup;
+			children = (
+				20010050 /* DiagnosticsView.swift */,
+				20010051 /* DiagnosticsViewModel.swift */,
+			);
+			path = Diagnostics;
+			sourceTree = "<group>";
+		};
 		60010017 /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +331,7 @@
 			children = (
 				20010031 /* SavedPreset.swift */,
 				20010032 /* KnownDevice.swift */,
+				20010052 /* AppSettings.swift */,
 				20010033 /* ModelContainer.swift */,
 			);
 			path = Data;
@@ -330,6 +369,7 @@
 				20020003 /* BLECommandQueueTests.swift */,
 				20020004 /* SharkPowerProtocolTests.swift */,
 				20020005 /* HomeViewModelTests.swift */,
+				20020006 /* SimulationModeTests.swift */,
 			);
 			path = SharkPowerV2/Tests;
 			sourceTree = "<group>";
@@ -461,11 +501,16 @@
 				10010026 /* BLECommandQueue.swift in Sources */,
 				10010027 /* LightingCommand.swift in Sources */,
 				10010028 /* SharkPowerProtocol.swift in Sources */,
+				10010045 /* SharkPowerProtocolConfig.swift in Sources */,
+				10010046 /* FakeBLEDevice.swift in Sources */,
+				10010047 /* SimulationManager.swift in Sources */,
 				10010029 /* SharkPowerDevice.swift in Sources */,
 				10010030 /* AppError.swift in Sources */,
 				10010031 /* SavedPreset.swift in Sources */,
 				10010032 /* KnownDevice.swift in Sources */,
+				10010051 /* AppSettings.swift in Sources */,
 				10010033 /* ModelContainer.swift in Sources */,
+				10010048 /* DraftLightingState.swift in Sources */,
 				10010034 /* HomeViewModel.swift in Sources */,
 				10010035 /* HomeView.swift in Sources */,
 				10010036 /* DevicesViewModel.swift in Sources */,
@@ -474,6 +519,8 @@
 				10010039 /* PresetsView.swift in Sources */,
 				10010040 /* SettingsViewModel.swift in Sources */,
 				10010041 /* SettingsView.swift in Sources */,
+				10010049 /* DiagnosticsView.swift in Sources */,
+				10010050 /* DiagnosticsViewModel.swift in Sources */,
 				10010042 /* ColorPickerSheet.swift in Sources */,
 				10010043 /* ModeSelectionSheet.swift in Sources */,
 			);
@@ -488,6 +535,7 @@
 				10020003 /* BLECommandQueueTests.swift in Sources */,
 				10020004 /* SharkPowerProtocolTests.swift in Sources */,
 				10020005 /* HomeViewModelTests.swift in Sources */,
+				10020006 /* SimulationModeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,8 @@
 //  SharkPowerProtocolTests.swift
 //  SharkPowerV2Tests
 //
-//  Unit tests verifying protocol encoding, checksum calculation, and safe abstraction.
+//  Unit tests verifying protocol safety, unverified guards, and configuration nil values.
+//  RULE 1 & RULE 2 COMPLIANT.
 //
 
 import XCTest
@@ -11,35 +12,41 @@ import SwiftUI
 
 final class SharkPowerProtocolTests: XCTestCase {
 
-    func testEncodeModeCommand() throws {
-        let proto = SharkPowerProtocol()
+    func testUnverifiedProtocolThrowsOnEncode() {
+        let proto = DefaultSharkPowerProtocol(config: .unverified)
         let command = LightingCommand.setMode(.forward)
-        let data = try proto.encode(command)
 
-        XCTAssertFalse(data.isEmpty)
-        XCTAssertEqual(data[0], 0x53, "Header must be 0x53 ('S')")
-        XCTAssertEqual(data[1], 0x01, "Opcode for mode must be 0x01")
-        XCTAssertEqual(data[3], 0x01, "Forward mode byte must be 0x01")
-        XCTAssertEqual(data.last, 0xAA, "Footer byte must be 0xAA")
+        XCTAssertFalse(proto.config.isVerified, "Unverified config must have isVerified = false")
+        XCTAssertNil(proto.config.serviceUUID, "Unverified service UUID must be nil")
+        XCTAssertNil(proto.config.writeCharacteristicUUID, "Unverified characteristic UUID must be nil")
+
+        XCTAssertThrowsError(try proto.encode(command)) { error in
+            guard let protoError = error as? SharkPowerProtocolError else {
+                XCTFail("Expected SharkPowerProtocolError but received \(error)")
+                return
+            }
+            XCTAssertEqual(protoError, SharkPowerProtocolError.unverifiedProtocol)
+        }
     }
 
-    func testEncodeFullConfigurationSync() throws {
-        let proto = SharkPowerProtocol()
-        let command = LightingCommand.setFullConfiguration(
-            mode: .trailing,
-            color: Color(red: 1.0, green: 0.0, blue: 0.0),
-            brightness: 1.0,
-            speed: 0.5
-        )
-        let data = try proto.encode(command)
+    func testUnverifiedProtocolThrowsOnDecode() {
+        let proto = DefaultSharkPowerProtocol(config: .unverified)
+        let dummyData = Data([0x01, 0x02, 0x03])
 
-        XCTAssertGreaterThan(data.count, 6)
-        XCTAssertEqual(data[0], 0x53)
-        XCTAssertEqual(data[1], 0x05, "Full config opcode must be 0x05")
+        XCTAssertThrowsError(try proto.decode(dummyData)) { error in
+            guard let protoError = error as? SharkPowerProtocolError else {
+                XCTFail("Expected SharkPowerProtocolError but received \(error)")
+                return
+            }
+            XCTAssertEqual(protoError, SharkPowerProtocolError.unverifiedProtocol)
+        }
     }
 
-    func testProtocolSafetyConfiguration() {
-        let config = SharkPowerProtocolConfig.pendingVerification
-        XCTAssertTrue(config.isPendingVerification, "Protocol must explicitly track verification status")
+    func testProtocolConfigDefaultsAreStrictlyNil() {
+        let config = SharkPowerProtocolConfig.unverified
+        XCTAssertNil(config.serviceUUID)
+        XCTAssertNil(config.writeCharacteristicUUID)
+        XCTAssertNil(config.notifyCharacteristicUUID)
+        XCTAssertFalse(config.isVerified)
     }
 }

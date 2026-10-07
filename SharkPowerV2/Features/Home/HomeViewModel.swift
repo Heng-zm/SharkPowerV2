@@ -17,12 +17,17 @@ public enum ApplyState: Equatable {
 
 @MainActor
 public final class HomeViewModel: ObservableObject {
-    @Published public var selectedMode: LEDMode = .forward
-    @Published public var parameters: LEDAnimationParameters = LEDAnimationParameters(
-        speed: 0.55,
-        brightness: 0.90,
-        color: SharkTheme.neonCyan
-    )
+    @Published public var draftState: DraftLightingState = DraftLightingState()
+
+    public var selectedMode: LEDMode {
+        get { draftState.mode }
+        set { draftState.mode = newValue }
+    }
+
+    public var parameters: LEDAnimationParameters {
+        get { draftState.parameters }
+        set { draftState.parameters = newValue }
+    }
 
     @Published public var applyState: ApplyState = .idle
     @Published public var showColorPicker: Bool = false
@@ -90,11 +95,13 @@ public final class HomeViewModel: ObservableObject {
     }
 
     public func loadPreset(mode: LEDMode, colorHex: String, brightness: Double, speed: Double) {
-        self.selectedMode = mode
-        self.parameters = LEDAnimationParameters(
-            speed: speed,
-            brightness: brightness,
-            color: Color(hex: colorHex)
+        self.draftState = DraftLightingState(
+            mode: mode,
+            parameters: LEDAnimationParameters(
+                speed: speed,
+                brightness: brightness,
+                color: Color(hex: colorHex)
+            )
         )
         Haptics.shared.selectionChanged()
     }

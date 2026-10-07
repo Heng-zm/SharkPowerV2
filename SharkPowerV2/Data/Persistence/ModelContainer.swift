@@ -13,7 +13,8 @@ public enum SharkModelContainer {
     public static func create(inMemory: Bool = false) -> ModelContainer {
         let schema = Schema([
             SavedPreset.self,
-            KnownDevice.self
+            KnownDevice.self,
+            AppSettings.self
         ])
 
         let configuration = ModelConfiguration(
