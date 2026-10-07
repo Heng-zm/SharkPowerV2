@@ -29,6 +29,7 @@ public struct PresetsView: View {
                                 presetCard(preset: preset)
                             }
                         }
+                    }
                     .padding(.horizontal, SharkSpacing.md)
                     .padding(.top, SharkSpacing.md)
                     .padding(.bottom, 110)
