@@ -1,4 +1,4 @@
-name: Release Signed IPA
+name: Release IPA & Build Artifacts
 
 on:
   workflow_dispatch:
@@ -20,9 +20,12 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
   release-ipa:
-    name: Build, Sign & Release IPA
+    name: Build, Package & Release IPA
     runs-on: macos-14
 
     steps:
@@ -38,10 +41,11 @@ jobs:
         id: check_secrets
         run: |
           if [[ -z "${{ secrets.APPLE_CERTIFICATE_BASE64 }}" || -z "${{ secrets.PROVISIONING_PROFILE_BASE64 }}" ]]; then
-            echo "⚠️ Signing configuration (APPLE_CERTIFICATE_BASE64 / PROVISIONING_PROFILE_BASE64) is not set."
-            echo "Signed IPA export requires these secrets configured in GitHub Repository Settings."
+            echo "⚠️ Official signing credentials not configured in GitHub Secrets."
+            echo "A sideloadable / unsigned IPA package will be produced."
             echo "has_signing=false" >> $GITHUB_OUTPUT
           else
+            echo "✅ Apple signing credentials detected."
             echo "has_signing=true" >> $GITHUB_OUTPUT
           fi
 
@@ -81,27 +85,40 @@ jobs:
           chmod +x scripts/*.sh
           ./scripts/archive.sh
 
-      - name: Export IPA
+      - name: Export & Package IPA
+        env:
+          HAS_SIGNING: ${{ steps.check_secrets.outputs.has_signing }}
+          IPA_FILENAME: "SharkPowerV2-${{ github.event.inputs.version || github.ref_name }}.ipa"
         run: |
-          if [[ "${{ steps.check_secrets.outputs.has_signing }}" == "true" ]]; then
-            ./scripts/export-ipa.sh
-          else
-            echo "⚠️ Skipping export-ipa.sh: Signing configuration is required to export a distributable IPA."
-          fi
+          ./scripts/export-ipa.sh
+
+      - name: Compress xcarchive Bundle
+        run: |
+          cd build
+          zip -qr SharkPowerV2.xcarchive.zip SharkPowerV2.xcarchive
 
       - name: Upload IPA Artifact
-        if: steps.check_secrets.outputs.has_signing == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: SharkPowerV2-${{ github.event.inputs.version || github.ref_name }}-build-${{ github.run_number }}.ipa
           path: build/ipa/*.ipa
           retention-days: 14
 
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/') && steps.check_secrets.outputs.has_signing == 'true'
+      - name: Upload xcarchive Bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: SharkPowerV2-xcarchive-${{ github.event.inputs.version || github.ref_name }}
+          path: build/SharkPowerV2.xcarchive.zip
+          retention-days: 14
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
-          files: build/ipa/*.ipa
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || format('v{0}', github.event.inputs.version || '1.0.0') }}
+          files: |
+            build/ipa/*.ipa
+            build/SharkPowerV2.xcarchive.zip
           generate_release_notes: true
           draft: false
           prerelease: false

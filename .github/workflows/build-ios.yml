@@ -48,6 +48,17 @@ jobs:
         run: |
           ./scripts/archive.sh
 
+      - name: Package IPA
+        run: |
+          ./scripts/export-ipa.sh
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SharkPowerV2-ipa-${{ github.sha }}
+          path: build/ipa/*.ipa
+          retention-days: 7
+
       - name: Upload xcarchive Artifact
         uses: actions/upload-artifact@v4
         with:
