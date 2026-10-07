@@ -3,6 +3,7 @@
 //  SharkPowerV2
 //
 //  Live continuous LED light strip preview powered by TimelineView and Canvas.
+//  Strictly continuous light-bar representation without dot or segment artifacts.
 //
 
 import SwiftUI
@@ -36,7 +37,7 @@ public struct LEDPreviewView: View {
     }
 
     public var body: some View {
-        VStack(spacing: SharkSpacing.xs) {
+        VStack(spacing: SharkSpacing.xxs) {
             // Header telemetry & expand button
             HStack {
                 HStack(spacing: 6) {
@@ -72,7 +73,7 @@ public struct LEDPreviewView: View {
             .padding(.horizontal, SharkSpacing.md)
             .padding(.top, SharkSpacing.sm)
 
-            // TimelineView Canvas Renderer
+            // TimelineView Canvas Renderer (Continuous Smooth Neon Bar)
             TimelineView(.animation(paused: scenePhase != .active)) { timeline in
                 let continuousTime = reduceMotion ? 0.0 : timeline.date.timeIntervalSinceReferenceDate
                 let activeAnim = activeAnimation(for: mode)
@@ -87,19 +88,8 @@ public struct LEDPreviewView: View {
                     )
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 70)
+                .frame(height: 52)
             }
-
-            // Directional Sequential Indicator Bar
-            HStack(spacing: 4) {
-                ForEach(0..<8) { index in
-                    Capsule()
-                        .fill(indicatorColor(for: index))
-                        .frame(height: 2)
-                        .frame(maxWidth: .infinity)
-                }
-            }
-            .padding(.horizontal, SharkSpacing.lg)
             .padding(.bottom, SharkSpacing.xs)
         }
         .background(
@@ -129,19 +119,6 @@ public struct LEDPreviewView: View {
         case .reverse: return reverseAnim
         case .trailing: return trailingAnim
         case .chasing: return chasingAnim
-        }
-    }
-
-    private func indicatorColor(for index: Int) -> Color {
-        switch mode {
-        case .forward:
-            return parameters.color.opacity(0.2 + (Double(index) * 0.1))
-        case .reverse:
-            return parameters.color.opacity(0.9 - (Double(index) * 0.1))
-        case .trailing, .chasing:
-            return (index % 2 == 0) ? parameters.color.opacity(0.7) : parameters.color.opacity(0.2)
-        case .staticGlow:
-            return parameters.color.opacity(0.5)
         }
     }
 }

@@ -111,10 +111,11 @@ public struct DevicesView: View {
                     }
                 }
                 .padding(.horizontal, SharkSpacing.md)
-                .padding(.bottom, SharkSpacing.xl)
+                .padding(.bottom, 110)
             }
             .padding(.top, SharkSpacing.md)
         }
+        .scrollIndicators(.hidden)
     }
 
     // MARK: - Device Row Card

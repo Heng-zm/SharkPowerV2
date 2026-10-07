@@ -29,9 +29,11 @@ public struct PresetsView: View {
                                 presetCard(preset: preset)
                             }
                         }
-                    }
-                    .padding(SharkSpacing.md)
+                    .padding(.horizontal, SharkSpacing.md)
+                    .padding(.top, SharkSpacing.md)
+                    .padding(.bottom, 110)
                 }
+                .scrollIndicators(.hidden)
             }
             .navigationTitle("Presets")
             .navigationBarTitleDisplayMode(.inline)

@@ -20,7 +20,7 @@ public struct HomeView: View {
                 SharkTheme.backgroundPrimary.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: SharkSpacing.lg) {
+                    VStack(spacing: SharkSpacing.md) {
                         // Top Telemetry Header
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
@@ -44,7 +44,7 @@ public struct HomeView: View {
                             )
                         }
                         .padding(.horizontal, SharkSpacing.md)
-                        .padding(.top, SharkSpacing.xs)
+                        .padding(.top, SharkSpacing.xxs)
 
                         // 1. HERO: Live Continuous Sequential LED Preview
                         LEDPreviewView(
@@ -90,7 +90,7 @@ public struct HomeView: View {
                                             }
                                             .font(SharkTypography.subheadline)
                                             .padding(.horizontal, 14)
-                                            .padding(.vertical, 9)
+                                            .padding(.vertical, 8)
                                             .background(
                                                 Capsule()
                                                     .fill(isSelected ? viewModel.parameters.color : SharkTheme.backgroundSecondary)
@@ -109,7 +109,7 @@ public struct HomeView: View {
 
                         // 3. Sliders Deck (Speed & Brightness)
                         AutomotiveCard(glowColor: viewModel.parameters.color) {
-                            VStack(spacing: SharkSpacing.lg) {
+                            VStack(spacing: SharkSpacing.md) {
                                 GlowSlider(
                                     title: "Slide Travel Speed",
                                     systemImage: "gauge.with.dots.needle.50percent",
@@ -149,7 +149,7 @@ public struct HomeView: View {
                                             .foregroundStyle(SharkTheme.textPrimary)
                                     }
                                     .frame(maxWidth: .infinity)
-                                    .frame(height: 50)
+                                    .frame(height: 48)
                                     .background(SharkTheme.backgroundSecondary)
                                     .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous))
                                     .overlay(
@@ -167,7 +167,7 @@ public struct HomeView: View {
                                     Image(systemName: "bookmark.fill")
                                         .font(.system(size: 16))
                                         .foregroundStyle(SharkTheme.textPrimary)
-                                        .frame(width: 50, height: 50)
+                                        .frame(width: 48, height: 48)
                                         .background(SharkTheme.backgroundSecondary)
                                         .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous))
                                         .overlay(
@@ -181,9 +181,10 @@ public struct HomeView: View {
                             applyButtonView
                         }
                         .padding(.horizontal, SharkSpacing.md)
-                        .padding(.bottom, SharkSpacing.xl)
+                        .padding(.bottom, 110)
                     }
                 }
+                .scrollIndicators(.hidden)
             }
             .navigationBarHidden(true)
             .sheet(isPresented: $viewModel.showColorPicker) {
