@@ -20,6 +20,14 @@ public final class DiagnosticsViewModel: ObservableObject {
     @Published public private(set) var discoveredCharacteristics: [String] = []
     @Published public private(set) var eventLogs: [String] = []
     @Published public private(set) var isSimulationActive: Bool = false
+    @Published public private(set) var activeLightingMode: LightingMode = .forward
+
+    public var originalModeName: String { activeLightingMode.originalName }
+    public var iosImplementationStatus: String { "IMPLEMENTED" }
+    public var simulationStatus: String { "AVAILABLE" }
+    public var physicalHardwareStatus: String { "NOT VERIFIED" }
+    public var bleProtocolStatus: String { "UNVERIFIED" }
+    public var unverifiedApplyNotice: String { "Hardware protocol is not verified. No unverified BLE packet was transmitted." }
 
     private let device: SharkPowerDevice
     private let simulationManager: SimulationManager

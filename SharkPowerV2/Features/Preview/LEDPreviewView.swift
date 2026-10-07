@@ -17,13 +17,6 @@ public struct LEDPreviewView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
 
-    // Cached animation strategy instances
-    private let staticAnim = StaticAnimation()
-    private let forwardAnim = ForwardAnimation()
-    private let reverseAnim = ReverseAnimation()
-    private let trailingAnim = TrailingAnimation()
-    private let chasingAnim = ChasingAnimation()
-
     public init(
         mode: LEDMode,
         parameters: LEDAnimationParameters,
@@ -113,12 +106,6 @@ public struct LEDPreviewView: View {
     }
 
     private func activeAnimation(for mode: LEDMode) -> LEDAnimation {
-        switch mode {
-        case .staticGlow: return staticAnim
-        case .forward: return forwardAnim
-        case .reverse: return reverseAnim
-        case .trailing: return trailingAnim
-        case .chasing: return chasingAnim
-        }
+        LEDAnimationFactory.animation(for: mode)
     }
 }

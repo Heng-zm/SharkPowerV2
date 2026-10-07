@@ -37,8 +37,22 @@ public final class SavedPreset {
         self.createdAt = createdAt
     }
 
+    public var modeRawValue: String {
+        mode
+    }
+
+    /// Safely resolves the saved mode. If unknown or missing, falls back to .forward without crashing.
+    public var lightingMode: LightingMode {
+        LightingMode(rawValue: mode) ?? .forward
+    }
+
     public var ledMode: LEDMode {
-        LEDMode(rawValue: mode) ?? .forward
+        lightingMode
+    }
+
+    /// Indicates whether the saved mode rawValue corresponds to a known, supported LightingMode.
+    public var isRecognizedMode: Bool {
+        LightingMode(rawValue: mode) != nil
     }
 
     public var color: Color {

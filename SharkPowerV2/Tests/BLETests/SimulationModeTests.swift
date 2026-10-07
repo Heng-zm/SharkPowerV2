@@ -50,6 +50,26 @@ final class SimulationModeTests: XCTestCase {
         wait(for: [expectationApply], timeout: 5.0)
     }
 
+    func testSimulationManagerAppliesAllLightingModesSuccessfully() {
+        let sim = SimulationManager()
+        sim.isEnabled = true
+        sim.shouldSimulateErrors = false
+
+        for mode in LightingMode.allCases {
+            let exp = expectation(description: "Simulate apply for \(mode.rawValue)")
+            sim.simulateApply(command: .setMode(mode)) { result in
+                switch result {
+                case .success(let resp):
+                    XCTAssertTrue(resp.success)
+                    exp.fulfill()
+                case .failure(let err):
+                    XCTFail("Failed simulation for \(mode): \(err)")
+                }
+            }
+            wait(for: [exp], timeout: 5.0)
+        }
+    }
+
     func testSimulationManagerErrorInjection() {
         let sim = SimulationManager()
         sim.isEnabled = true

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum LEDMode: String, CaseIterable, Identifiable, Codable {
+public enum LightingMode: String, CaseIterable, Identifiable, Codable {
     case forward = "Forward"
     case reverse = "Reverse"
     case trailing = "Trailing"
@@ -15,6 +15,28 @@ public enum LEDMode: String, CaseIterable, Identifiable, Codable {
     case staticGlow = "Static"
 
     public var id: String { rawValue }
+
+    public init?(rawValue: String) {
+        switch rawValue.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
+        case "forward": self = .forward
+        case "reverse": self = .reverse
+        case "trailing": self = .trailing
+        case "chasing": self = .chasing
+        case "static", "staticglow": self = .staticGlow
+        default: return nil
+        }
+    }
+
+    /// Original mode name as identified in SUPRE RACERS (com.sharkpower.supreracers)
+    public var originalName: String {
+        switch self {
+        case .forward: return "Forward"
+        case .reverse: return "Reverse"
+        case .trailing: return "Trailing"
+        case .chasing: return "Chasing"
+        case .staticGlow: return "Static Glow"
+        }
+    }
 
     public var iconName: String {
         switch self {
@@ -35,7 +57,14 @@ public enum LEDMode: String, CaseIterable, Identifiable, Codable {
         case .staticGlow: return "Solid constant illumination across full light bar"
         }
     }
+
+    public var discoveryStatus: String { "DISCOVERED" }
+    public var implementationStatus: String { "IMPLEMENTED" }
+    public var hardwareStatus: String { "TBD" }
 }
+
+/// Seamless backward-compatibility alias ensuring zero breaking changes across existing components.
+public typealias LEDMode = LightingMode
 
 public struct LEDAnimationParameters: Equatable {
     public var speed: Double       // Normalized 0.0 ... 1.0

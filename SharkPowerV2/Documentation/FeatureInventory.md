@@ -7,42 +7,45 @@
 
 ## 1. Status Definitions
 
-* **VERIFIED**: Behavior confirmed through physical testing and packet analysis on the actual **Shark Power V2** hardware.
-* **IMPLEMENTED**: Fully implemented, compiled, and validated in the new native iOS architecture.
-* **TBD**: Not confirmed yet against physical hardware. Never assumed or invented.
-* **SIMULATED**: Functional inside the iOS Simulation Mode without physical hardware connection.
+* **ORIGINAL APP DISCOVERED**: Verified presence in original SUPRE RACERS app (`com.sharkpower.supreracers`) from store metadata, UI, and APK package evidence.
+* **IOS IMPLEMENTED**: Fully implemented, compiled, and rendered using native SwiftUI `Canvas`, `TimelineView`, and `LEDAnimationFactory`.
+* **SIMULATION AVAILABLE**: Operating within `SimulationManager` offline lifecycle workflows without physical BLE hardware.
+* **PHYSICAL HARDWARE VERIFIED**: Confirmed via physical testing and packet sniffing on actual **Shark Power V2** controller hardware.
 
 > **CRITICAL ARCHITECTURAL PRINCIPLE:**
 > ```text
-> Simulation Mode ≠ Hardware Verification
-> Implemented ≠ Verified
+> Original Discovered ≠ iOS Implemented ≠ Simulation Available ≠ Physical Hardware Verified
 > ```
-> An iOS feature can be `IMPLEMENTED` and `SIMULATED` while the underlying physical hardware behavior remains `TBD`.
+> An iOS feature can be `IMPLEMENTED` and `SIMULATION AVAILABLE` while physical hardware confirmation remains `TBD`.
 
 ---
 
 ## 2. Hardware Verification Matrix (Section 27 Source of Truth)
 
-| ID | Feature Name | Hardware Status | iOS Status | Simulation Status | Notes & Evidence |
-| :--- | :--- | :---: | :---: | :---: | :--- |
-| **F-01** | **Forward Slide** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Smooth continuous sliding beam left-to-right via `ForwardAnimation` |
-| **F-02** | **Reverse Slide** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Smooth continuous sliding beam right-to-left via `ReverseAnimation` |
-| **F-03** | **Trailing Fade Flow** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Bright leading edge with exponential falloff via `TrailingAnimation` |
-| **F-04** | **Chasing Segments** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Multiple continuous light segments in lockstep via `ChasingAnimation` |
-| **F-05** | **Static Solid Glow** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Solid full-strip continuous illumination via `StaticAnimation` |
-| **F-06** | **Color Customization** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Full RGB picker + curated automotive swatches; BLE RGB dispatch blocked |
-| **F-07** | **Speed Control** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Continuous slider (0.0...1.0) controlling preview frequency; BLE write blocked |
-| **F-08** | **Brightness Control**| **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Continuous slider (0.0...1.0) controlling luminous alpha; BLE write blocked |
-| **F-09** | **Live Sequential Sim**| **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | 60 FPS `Canvas` + `TimelineView(.animation)` continuous optic tube |
-| **F-10** | **Decoupled Apply** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | `DraftLightingState` separated from hardware state; Apply button barrier |
-| **F-11** | **BLE Scanner** | **TBD** | **IMPLEMENTED** | **SIMULATED** | `BLEScanner` CoreBluetooth central manager + simulated discovery |
-| **F-12** | **Auto-Reconnect** | **TBD** | **IMPLEMENTED** | **SIMULATED** | App feature via SwiftData `KnownDevice`; hardware auto-pairing TBD |
-| **F-13** | **Service UUID** | **TBD** | **TBD** | **SIMULATED** | `SharkPowerProtocolConfig.serviceUUID == nil` until physical sniffing |
-| **F-14** | **Characteristic UUID**| **TBD** | **TBD** | **SIMULATED** | `SharkPowerProtocolConfig.writeCharacteristicUUID == nil` until sniffing |
-| **F-15** | **Packet Format** | **TBD** | **TBD** | **SIMULATED** | Real hardware codec throws `unverifiedProtocol`; zero invented bytes |
-| **F-16** | **Command Throttling** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | `BLECommandQueue` actor with deduplication, serialization, & timeout |
-| **F-17** | **Saved Presets** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | SwiftData local offline persistence (`SavedPreset`) |
-| **F-18** | **Diagnostics** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** | Live telemetry screen (`DiagnosticsView`) with GATT & protocol inspector |
+| ID | Feature Name | Original App Status | iOS Status | Simulation Status | Physical Hardware Status | Evidence & Architecture Notes |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **M-01** | **Forward Slide** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `ForwardAnimation` via continuous `LEDAnimationFactory` |
+| **M-02** | **Reverse Slide** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `ReverseAnimation` via continuous `LEDAnimationFactory` |
+| **M-03** | **Trailing Fade Flow** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `TrailingAnimation` with exponential decay |
+| **M-04** | **Chasing Segments** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `ChasingAnimation` with synchronized lockstep |
+| **M-05** | **Static Solid Glow** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `StaticAnimation` solid uniform illumination |
+| **F-06** | **Color Customization** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | RGB picker + automotive palette; BLE write BLOCKED |
+| **F-07** | **Speed Control** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | 0.0...1.0 slider adjusting preview frequency; BLE write BLOCKED |
+| **F-08** | **Brightness Control**| **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | 0.0...1.0 slider adjusting luminous output; BLE write BLOCKED |
+| **F-09** | **Live Sequential Sim**| **N/A (Upgraded)** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | 60 FPS `Canvas` + `TimelineView` continuous optic tube |
+| **F-10** | **Decoupled Apply** | **N/A (Upgraded)** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `DraftLightingState` separated from hardware state |
+| **F-11** | **BLE Scanner** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `BLEScanner` CoreBluetooth central + RSSI meter |
+| **F-12** | **Auto-Reconnect** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | SwiftData `KnownDevice` paired device persistence |
+| **F-13** | **Service UUID** | **TBD** | **TBD** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `SharkPowerProtocolConfig.serviceUUID == nil` pending capture |
+| **F-14** | **Characteristic UUID**| **TBD** | **TBD** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `SharkPowerProtocolConfig.writeCharacteristicUUID == nil` pending capture |
+| **F-15** | **Packet Format** | **TBD** | **TBD** | **AVAILABLE** | **NOT VERIFIED (TBD)** | Hardware codec throws `unverifiedProtocol`; zero invented bytes |
+| **F-16** | **Command Throttling** | **N/A (Upgraded)** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | `BLECommandQueue` actor with deduplication & retry |
+| **F-17** | **Saved Presets** | **N/A (Upgraded)** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | SwiftData local offline persistence (`SavedPreset`) |
+| **F-18** | **Diagnostics** | **N/A (Upgraded)** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** | Live telemetry screen (`DiagnosticsView`) & verification status |
+
+See detailed documentation:
+* [SUPRE_RACERS_LED_MODES.md](file:///c:/Users/Ozo/Desktop/New%20folder/docs/SUPRE_RACERS_LED_MODES.md)
+* [SUPRE_RACERS_MODE_MAPPING.md](file:///c:/Users/Ozo/Desktop/New%20folder/docs/SUPRE_RACERS_MODE_MAPPING.md)
 
 ---
 

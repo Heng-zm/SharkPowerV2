@@ -31,20 +31,24 @@ A feature can be `IMPLEMENTED` in iOS and functional in `SIMULATION` while physi
 
 ## 2. Hardware Verification Matrix (Source of Truth)
 
-| Feature | Hardware Status | iOS Status | Simulation Status |
-| :--- | :---: | :---: | :---: |
-| **Forward Slide** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **Reverse Slide** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **Trailing** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **Chasing** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **Static** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **RGB Color** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **Speed Control** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **Brightness Control** | **TBD** | **IMPLEMENTED** | **IMPLEMENTED** |
-| **BLE Scanner** | **TBD** | **IMPLEMENTED** | **SIMULATED** |
-| **Service UUID** | **TBD** | **TBD** | **SIMULATED** |
-| **Characteristic UUID** | **TBD** | **TBD** | **SIMULATED** |
-| **Packet Format** | **TBD** | **TBD** | **SIMULATED** |
+| Feature / Mode | Original App Status | iOS Status | Simulation Status | Physical Hardware Status |
+| :--- | :---: | :---: | :---: | :---: |
+| **Forward Slide** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Reverse Slide** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Trailing** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Chasing** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Static Solid Glow** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **RGB Color** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Speed Control** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Brightness Control** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **BLE Scanner** | **DISCOVERED** | **IMPLEMENTED** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Service UUID** | **TBD** | **TBD** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Characteristic UUID** | **TBD** | **TBD** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+| **Packet Format** | **TBD** | **TBD** | **AVAILABLE** | **NOT VERIFIED (TBD)** |
+
+Detailed Evidence & Mapping Documentation:
+* [SUPRE RACERS LED Modes Evidence Table](file:///c:/Users/Ozo/Desktop/New%20folder/docs/SUPRE_RACERS_LED_MODES.md)
+* [SUPRE RACERS Mode Migration Mapping Matrix](file:///c:/Users/Ozo/Desktop/New%20folder/docs/SUPRE_RACERS_MODE_MAPPING.md)
 
 ---
 
@@ -127,7 +131,8 @@ SharkPowerV2/
 │   │   ├── HomeView.swift              # Cockpit dashboard with live preview & Apply flow
 │   │   └── HomeViewModel.swift         # Dashboard state coordinator
 │   ├── Preview/
-│   │   ├── LEDAnimation.swift          # LEDAnimation protocol & parameter definitions
+│   │   ├── LEDAnimation.swift          # LightingMode enum & LEDAnimation protocol
+│   │   ├── LEDAnimationFactory.swift   # Central factory routing modes to animations
 │   │   ├── StaticAnimation.swift       # Constant continuous illumination
 │   │   ├── ForwardAnimation.swift      # Left-to-right continuous sliding beam
 │   │   ├── ReverseAnimation.swift      # Right-to-left continuous sliding beam

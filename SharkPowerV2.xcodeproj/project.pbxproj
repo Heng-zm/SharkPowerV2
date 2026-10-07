@@ -58,6 +58,7 @@
 		10010049 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010050 /* DiagnosticsView.swift */; };
 		10010050 /* DiagnosticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010051 /* DiagnosticsViewModel.swift */; };
 		10010051 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010052 /* AppSettings.swift */; };
+		10010052 /* LEDAnimationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010053 /* LEDAnimationFactory.swift */; };
 		10020001 /* LEDAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020001 /* LEDAnimationTests.swift */; };
 		10020002 /* BLEScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020002 /* BLEScannerTests.swift */; };
 		10020003 /* BLECommandQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020003 /* BLECommandQueueTests.swift */; };
@@ -131,6 +132,7 @@
 		20010050 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
 		20010051 /* DiagnosticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsViewModel.swift; sourceTree = "<group>"; };
 		20010052 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		20010053 /* LEDAnimationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDAnimationFactory.swift; sourceTree = "<group>"; };
 		20020001 /* LEDAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDAnimationTests.swift; sourceTree = "<group>"; };
 		20020002 /* BLEScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScannerTests.swift; sourceTree = "<group>"; };
 		20020003 /* BLECommandQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLECommandQueueTests.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				20010011 /* LEDAnimation.swift */,
+				20010053 /* LEDAnimationFactory.swift */,
 				20010012 /* StaticAnimation.swift */,
 				20010013 /* ForwardAnimation.swift */,
 				20010014 /* ReverseAnimation.swift */,
@@ -540,6 +543,7 @@
 				10010009 /* GlowSlider.swift in Sources */,
 				10010010 /* ActionButton.swift in Sources */,
 				10010011 /* LEDAnimation.swift in Sources */,
+				10010052 /* LEDAnimationFactory.swift in Sources */,
 				10010012 /* StaticAnimation.swift in Sources */,
 				10010013 /* ForwardAnimation.swift in Sources */,
 				10010014 /* ReverseAnimation.swift in Sources */,

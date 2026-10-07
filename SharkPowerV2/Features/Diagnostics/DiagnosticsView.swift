@@ -48,6 +48,38 @@ public struct DiagnosticsView: View {
                             }
                         }
 
+                        // SUPRE RACERS Mode Verification Diagnostics (Section 22)
+                        AutomotiveCard(glowColor: SharkTheme.neonCyan) {
+                            VStack(alignment: .leading, spacing: SharkSpacing.sm) {
+                                HStack {
+                                    Image(systemName: "lightbulb.led.fill")
+                                        .foregroundStyle(SharkTheme.neonCyan)
+                                    Text("SUPRE RACERS MODE STATUS")
+                                        .font(SharkTypography.badge)
+                                        .foregroundStyle(SharkTheme.neonCyan)
+                                    Spacer()
+                                }
+
+                                diagnosticRow(label: "Original Mode", value: viewModel.originalModeName)
+                                diagnosticRow(label: "iOS Implementation", value: viewModel.iosImplementationStatus)
+                                diagnosticRow(label: "Simulation", value: viewModel.simulationStatus)
+                                diagnosticRow(label: "Physical Hardware", value: viewModel.physicalHardwareStatus)
+                                diagnosticRow(label: "BLE Protocol", value: viewModel.bleProtocolStatus)
+
+                                Divider().background(SharkTheme.borderSubtle)
+
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("HARDWARE SAFETY ENFORCEMENT")
+                                        .font(SharkTypography.caption)
+                                        .foregroundStyle(SharkTheme.textMuted)
+
+                                    Text(viewModel.unverifiedApplyNotice)
+                                        .font(SharkTypography.telemetryMono)
+                                        .foregroundStyle(SharkTheme.cyberAmber)
+                                }
+                            }
+                        }
+
                         // Simulation Status Banner
                         if viewModel.isSimulationActive {
                             AutomotiveCard(glowColor: SharkTheme.neonCyan) {

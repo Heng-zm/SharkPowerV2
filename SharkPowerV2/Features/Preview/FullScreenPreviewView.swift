@@ -56,15 +56,7 @@ public struct FullScreenPreviewView: View {
                     // Massive High-Definition Continuous Light Bar
                     VStack(spacing: SharkSpacing.md) {
                         TimelineView(.animation) { timeline in
-                            let activeAnim: LEDAnimation = {
-                                switch mode {
-                                case .staticGlow: return StaticAnimation()
-                                case .forward: return ForwardAnimation()
-                                case .reverse: return ReverseAnimation()
-                                case .trailing: return TrailingAnimation()
-                                case .chasing: return ChasingAnimation()
-                                }
-                            }()
+                            let activeAnim = LEDAnimationFactory.animation(for: mode)
 
                             Canvas { context, size in
                                 LEDCanvasRenderer.render(
