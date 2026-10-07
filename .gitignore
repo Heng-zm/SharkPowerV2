@@ -1,0 +1,45 @@
+# Xcode
+## User settings
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+## Build generated
+build/
+DerivedData/
+*.moved-aside
+*.xcuserstate
+
+## Output artifacts
+*.ipa
+*.xcarchive
+*.dSYM.zip
+*.dSYM
+
+## CocoaPods & Carthage
+Pods/
+Carthage/Build/
+
+## Swift Package Manager
+.build/
+Packages/
+
+## macOS system files
+.DS_Store
+*.swp
+*~
+
+## CRITICAL: Apple Signing Certificates & Secrets (NEVER COMMIT)
+*.p12
+*.mobileprovision
+*.cer
+*.key
+*.pem
+*.p8
+*.certSigningRequest
+*.jks
+*.keystore
+signing/
+secrets/
+.env
+.env.*

@@ -1,0 +1,667 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10010001 /* SharkPowerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010001 /* SharkPowerApp.swift */; };
+		10010002 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010002 /* AppRouter.swift */; };
+		10010003 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010003 /* Colors.swift */; };
+		10010004 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010004 /* Typography.swift */; };
+		10010005 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010005 /* Spacing.swift */; };
+		10010006 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010006 /* Haptics.swift */; };
+		10010007 /* AutomotiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010007 /* AutomotiveCard.swift */; };
+		10010008 /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010008 /* StatusBadge.swift */; };
+		10010009 /* GlowSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010009 /* GlowSlider.swift */; };
+		10010010 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010010 /* ActionButton.swift */; };
+		10010011 /* LEDAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010011 /* LEDAnimation.swift */; };
+		10010012 /* StaticAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010012 /* StaticAnimation.swift */; };
+		10010013 /* ForwardAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010013 /* ForwardAnimation.swift */; };
+		10010014 /* ReverseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010014 /* ReverseAnimation.swift */; };
+		10010015 /* TrailingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010015 /* TrailingAnimation.swift */; };
+		10010016 /* ChasingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010016 /* ChasingAnimation.swift */; };
+		10010017 /* LEDCanvasRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010017 /* LEDCanvasRenderer.swift */; };
+		10010018 /* LEDPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010018 /* LEDPreviewView.swift */; };
+		10010019 /* FullScreenPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010019 /* FullScreenPreviewView.swift */; };
+		10010020 /* ConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010020 /* ConnectionState.swift */; };
+		10010021 /* BLEProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010021 /* BLEProtocols.swift */; };
+		10010022 /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010022 /* BLEDevice.swift */; };
+		10010023 /* BLEScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010023 /* BLEScanner.swift */; };
+		10010024 /* BLEConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010024 /* BLEConnection.swift */; };
+		10010025 /* BLEGATTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010025 /* BLEGATTClient.swift */; };
+		10010026 /* BLECommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010026 /* BLECommandQueue.swift */; };
+		10010027 /* LightingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010027 /* LightingCommand.swift */; };
+		10010028 /* SharkPowerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010028 /* SharkPowerProtocol.swift */; };
+		10010029 /* SharkPowerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010029 /* SharkPowerDevice.swift */; };
+		10010030 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010030 /* AppError.swift */; };
+		10010031 /* SavedPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010031 /* SavedPreset.swift */; };
+		10010032 /* KnownDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010032 /* KnownDevice.swift */; };
+		10010033 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010033 /* ModelContainer.swift */; };
+		10010034 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010034 /* HomeViewModel.swift */; };
+		10010035 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010035 /* HomeView.swift */; };
+		10010036 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010036 /* DevicesViewModel.swift */; };
+		10010037 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010037 /* DevicesView.swift */; };
+		10010038 /* PresetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010038 /* PresetsViewModel.swift */; };
+		10010039 /* PresetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010039 /* PresetsView.swift */; };
+		10010040 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010040 /* SettingsViewModel.swift */; };
+		10010041 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010041 /* SettingsView.swift */; };
+		10010042 /* ColorPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010042 /* ColorPickerSheet.swift */; };
+		10010043 /* ModeSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010043 /* ModeSelectionSheet.swift */; };
+		10010044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20010044 /* Assets.xcassets */; };
+		10020001 /* LEDAnimationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020001 /* LEDAnimationTests.swift */; };
+		10020002 /* BLEScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020002 /* BLEScannerTests.swift */; };
+		10020003 /* BLECommandQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020003 /* BLECommandQueueTests.swift */; };
+		10020004 /* SharkPowerProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020004 /* SharkPowerProtocolTests.swift */; };
+		10020005 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20020005 /* HomeViewModelTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		30010001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00010001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 40010001;
+			remoteInfo = SharkPowerV2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		40010001 /* SharkPowerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharkPowerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40020001 /* SharkPowerV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharkPowerV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20010001 /* SharkPowerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerApp.swift; sourceTree = "<group>"; };
+		20010002 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		20010003 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		20010004 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		20010005 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		20010006 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		20010007 /* AutomotiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomotiveCard.swift; sourceTree = "<group>"; };
+		20010008 /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
+		20010009 /* GlowSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowSlider.swift; sourceTree = "<group>"; };
+		20010010 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		20010011 /* LEDAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDAnimation.swift; sourceTree = "<group>"; };
+		20010012 /* StaticAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAnimation.swift; sourceTree = "<group>"; };
+		20010013 /* ForwardAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForwardAnimation.swift; sourceTree = "<group>"; };
+		20010014 /* ReverseAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseAnimation.swift; sourceTree = "<group>"; };
+		20010015 /* TrailingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingAnimation.swift; sourceTree = "<group>"; };
+		20010016 /* ChasingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChasingAnimation.swift; sourceTree = "<group>"; };
+		20010017 /* LEDCanvasRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDCanvasRenderer.swift; sourceTree = "<group>"; };
+		20010018 /* LEDPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDPreviewView.swift; sourceTree = "<group>"; };
+		20010019 /* FullScreenPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPreviewView.swift; sourceTree = "<group>"; };
+		20010020 /* ConnectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionState.swift; sourceTree = "<group>"; };
+		20010021 /* BLEProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEProtocols.swift; sourceTree = "<group>"; };
+		20010022 /* BLEDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
+		20010023 /* BLEScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScanner.swift; sourceTree = "<group>"; };
+		20010024 /* BLEConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEConnection.swift; sourceTree = "<group>"; };
+		20010025 /* BLEGATTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEGATTClient.swift; sourceTree = "<group>"; };
+		20010026 /* BLECommandQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLECommandQueue.swift; sourceTree = "<group>"; };
+		20010027 /* LightingCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingCommand.swift; sourceTree = "<group>"; };
+		20010028 /* SharkPowerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerProtocol.swift; sourceTree = "<group>"; };
+		20010029 /* SharkPowerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerDevice.swift; sourceTree = "<group>"; };
+		20010030 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		20010031 /* SavedPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPreset.swift; sourceTree = "<group>"; };
+		20010032 /* KnownDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownDevice.swift; sourceTree = "<group>"; };
+		20010033 /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
+		20010034 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		20010035 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		20010036 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
+		20010037 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
+		20010038 /* PresetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsViewModel.swift; sourceTree = "<group>"; };
+		20010039 /* PresetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsView.swift; sourceTree = "<group>"; };
+		20010040 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		20010041 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		20010042 /* ColorPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerSheet.swift; sourceTree = "<group>"; };
+		20010043 /* ModeSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionSheet.swift; sourceTree = "<group>"; };
+		20010044 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20010045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20020001 /* LEDAnimationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDAnimationTests.swift; sourceTree = "<group>"; };
+		20020002 /* BLEScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScannerTests.swift; sourceTree = "<group>"; };
+		20020003 /* BLECommandQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLECommandQueueTests.swift; sourceTree = "<group>"; };
+		20020004 /* SharkPowerProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkPowerProtocolTests.swift; sourceTree = "<group>"; };
+		20020005 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50010001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50020001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		60010001 = {
+			isa = PBXGroup;
+			children = (
+				60010002 /* SharkPowerV2 */,
+				60020001 /* Tests */,
+				60030001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		60010002 /* SharkPowerV2 */ = {
+			isa = PBXGroup;
+			children = (
+				60010003 /* App */,
+				60010004 /* Core */,
+				60010005 /* Features */,
+				60010006 /* Data */,
+				60010007 /* DesignSystem */,
+				60010008 /* Resources */,
+			);
+			path = SharkPowerV2;
+			sourceTree = "<group>";
+		};
+		60010003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				20010001 /* SharkPowerApp.swift */,
+				20010002 /* AppRouter.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		60010004 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				60010009 /* Bluetooth */,
+				60010010 /* Device */,
+				60010011 /* Errors */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		60010009 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				20010020 /* ConnectionState.swift */,
+				20010021 /* BLEProtocols.swift */,
+				20010022 /* BLEDevice.swift */,
+				20010023 /* BLEScanner.swift */,
+				20010024 /* BLEConnection.swift */,
+				20010025 /* BLEGATTClient.swift */,
+				20010026 /* BLECommandQueue.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		60010010 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				20010027 /* LightingCommand.swift */,
+				20010028 /* SharkPowerProtocol.swift */,
+				20010029 /* SharkPowerDevice.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+		60010011 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				20010030 /* AppError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		60010005 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				60010012 /* Home */,
+				60010013 /* Preview */,
+				60010014 /* Devices */,
+				60010015 /* Presets */,
+				60010016 /* Settings */,
+				60010017 /* Sheets */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		60010012 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				20010034 /* HomeViewModel.swift */,
+				20010035 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		60010013 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				20010011 /* LEDAnimation.swift */,
+				20010012 /* StaticAnimation.swift */,
+				20010013 /* ForwardAnimation.swift */,
+				20010014 /* ReverseAnimation.swift */,
+				20010015 /* TrailingAnimation.swift */,
+				20010016 /* ChasingAnimation.swift */,
+				20010017 /* LEDCanvasRenderer.swift */,
+				20010018 /* LEDPreviewView.swift */,
+				20010019 /* FullScreenPreviewView.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
+		60010014 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				20010036 /* DevicesViewModel.swift */,
+				20010037 /* DevicesView.swift */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		60010015 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				20010038 /* PresetsViewModel.swift */,
+				20010039 /* PresetsView.swift */,
+			);
+			path = Presets;
+			sourceTree = "<group>";
+		};
+		60010016 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				20010040 /* SettingsViewModel.swift */,
+				20010041 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		60010017 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				20010042 /* ColorPickerSheet.swift */,
+				20010043 /* ModeSelectionSheet.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		60010006 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				20010031 /* SavedPreset.swift */,
+				20010032 /* KnownDevice.swift */,
+				20010033 /* ModelContainer.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		60010007 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				20010003 /* Colors.swift */,
+				20010004 /* Typography.swift */,
+				20010005 /* Spacing.swift */,
+				20010006 /* Haptics.swift */,
+				20010007 /* AutomotiveCard.swift */,
+				20010008 /* StatusBadge.swift */,
+				20010009 /* GlowSlider.swift */,
+				20010010 /* ActionButton.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		60010008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20010044 /* Assets.xcassets */,
+				20010045 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		60020001 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				20020001 /* LEDAnimationTests.swift */,
+				20020002 /* BLEScannerTests.swift */,
+				20020003 /* BLECommandQueueTests.swift */,
+				20020004 /* SharkPowerProtocolTests.swift */,
+				20020005 /* HomeViewModelTests.swift */,
+			);
+			path = SharkPowerV2/Tests;
+			sourceTree = "<group>";
+		};
+		60030001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40010001 /* SharkPowerV2.app */,
+				40020001 /* SharkPowerV2Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		40010001 /* SharkPowerV2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70010001 /* Build configuration list for PBXNativeTarget "SharkPowerV2" */;
+			buildPhases = (
+				80010001 /* Sources */,
+				50010001 /* Frameworks */,
+				80010002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SharkPowerV2;
+			productName = SharkPowerV2;
+			productReference = 40010001 /* SharkPowerV2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40020001 /* SharkPowerV2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70020001 /* Build configuration list for PBXNativeTarget "SharkPowerV2Tests" */;
+			buildPhases = (
+				80020001 /* Sources */,
+				50020001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30010002 /* PBXTargetDependency */,
+			);
+			name = SharkPowerV2Tests;
+			productName = SharkPowerV2Tests;
+			productReference = 40020001 /* SharkPowerV2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00010001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					40010001 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					40020001 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 40010001;
+					};
+				};
+			};
+			buildConfigurationList = 70030001 /* Build configuration list for PBXProject "SharkPowerV2" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 60010001;
+			productRefGroup = 60030001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40010001 /* SharkPowerV2 */,
+				40020001 /* SharkPowerV2Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80010002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10010044 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80010001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10010001 /* SharkPowerApp.swift in Sources */,
+				10010002 /* AppRouter.swift in Sources */,
+				10010003 /* Colors.swift in Sources */,
+				10010004 /* Typography.swift in Sources */,
+				10010005 /* Spacing.swift in Sources */,
+				10010006 /* Haptics.swift in Sources */,
+				10010007 /* AutomotiveCard.swift in Sources */,
+				10010008 /* StatusBadge.swift in Sources */,
+				10010009 /* GlowSlider.swift in Sources */,
+				10010010 /* ActionButton.swift in Sources */,
+				10010011 /* LEDAnimation.swift in Sources */,
+				10010012 /* StaticAnimation.swift in Sources */,
+				10010013 /* ForwardAnimation.swift in Sources */,
+				10010014 /* ReverseAnimation.swift in Sources */,
+				10010015 /* TrailingAnimation.swift in Sources */,
+				10010016 /* ChasingAnimation.swift in Sources */,
+				10010017 /* LEDCanvasRenderer.swift in Sources */,
+				10010018 /* LEDPreviewView.swift in Sources */,
+				10010019 /* FullScreenPreviewView.swift in Sources */,
+				10010020 /* ConnectionState.swift in Sources */,
+				10010021 /* BLEProtocols.swift in Sources */,
+				10010022 /* BLEDevice.swift in Sources */,
+				10010023 /* BLEScanner.swift in Sources */,
+				10010024 /* BLEConnection.swift in Sources */,
+				10010025 /* BLEGATTClient.swift in Sources */,
+				10010026 /* BLECommandQueue.swift in Sources */,
+				10010027 /* LightingCommand.swift in Sources */,
+				10010028 /* SharkPowerProtocol.swift in Sources */,
+				10010029 /* SharkPowerDevice.swift in Sources */,
+				10010030 /* AppError.swift in Sources */,
+				10010031 /* SavedPreset.swift in Sources */,
+				10010032 /* KnownDevice.swift in Sources */,
+				10010033 /* ModelContainer.swift in Sources */,
+				10010034 /* HomeViewModel.swift in Sources */,
+				10010035 /* HomeView.swift in Sources */,
+				10010036 /* DevicesViewModel.swift in Sources */,
+				10010037 /* DevicesView.swift in Sources */,
+				10010038 /* PresetsViewModel.swift in Sources */,
+				10010039 /* PresetsView.swift in Sources */,
+				10010040 /* SettingsViewModel.swift in Sources */,
+				10010041 /* SettingsView.swift in Sources */,
+				10010042 /* ColorPickerSheet.swift in Sources */,
+				10010043 /* ModeSelectionSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80020001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10020001 /* LEDAnimationTests.swift in Sources */,
+				10020002 /* BLEScannerTests.swift in Sources */,
+				10020003 /* BLECommandQueueTests.swift in Sources */,
+				10020004 /* SharkPowerProtocolTests.swift in Sources */,
+				10020005 /* HomeViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30010002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 40010001 /* SharkPowerV2 */;
+			targetProxy = 30010001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		90010001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SharkPowerV2/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sharkpower.supreracers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Debug;
+		};
+		90010002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SharkPowerV2/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sharkpower.supreracers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Release;
+		};
+		90020001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sharkpower.SharkPowerV2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharkPowerV2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SharkPowerV2";
+			};
+			name = Debug;
+		};
+		90020002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sharkpower.SharkPowerV2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SharkPowerV2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SharkPowerV2";
+			};
+			name = Release;
+		};
+		90030001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		90030002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		70010001 /* Build configuration list for PBXNativeTarget "SharkPowerV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90010001 /* Debug */,
+				90010002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70020001 /* Build configuration list for PBXNativeTarget "SharkPowerV2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90020001 /* Debug */,
+				90020002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70030001 /* Build configuration list for PBXProject "SharkPowerV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90030001 /* Debug */,
+				90030002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 00010001 /* Project object */;
+}
