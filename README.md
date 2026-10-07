@@ -196,8 +196,7 @@ SharkPowerV2/
 ```
 
 ### GitHub Actions
-* **`build-ios.yml`**: Runs on PRs and pushes to `main` (integrity check, automated unit tests, Release archive).
-* **`release-ios.yml`**: Triggered via `workflow_dispatch` or tags (`v*.*.*`), injects signing credentials, exports signed IPA, and publishes to GitHub Releases.
+* **`build-ios.yml`**: Unified single-process workflow that runs repository integrity checks, executes unit test suites, compiles the release build, and packages and uploads exclusively the iPhone `.ipa` artifact (and attaches the `.ipa` to GitHub Releases on `v*.*.*` tags or workflow dispatch).
 
 ---
 
