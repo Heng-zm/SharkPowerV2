@@ -9,7 +9,6 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-@MainActor
 public enum SharkModelContainer {
     public static func create(inMemory: Bool = false) -> ModelContainer {
         let schema = Schema([
@@ -25,7 +24,8 @@ public enum SharkModelContainer {
 
         do {
             let container = try ModelContainer(for: schema, configurations: [configuration])
-            seedDefaultPresetsIfNeeded(context: container.mainContext)
+            let context = ModelContext(container)
+            seedDefaultPresetsIfNeeded(context: context)
             return container
         } catch {
             fatalError("Failed to initialize SwiftData ModelContainer: \(error)")

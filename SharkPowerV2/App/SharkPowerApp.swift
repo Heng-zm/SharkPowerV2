@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
+@MainActor
 struct SharkPowerApp: App {
     let container: ModelContainer
 

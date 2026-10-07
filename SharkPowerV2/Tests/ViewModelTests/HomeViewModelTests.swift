@@ -9,9 +9,9 @@ import XCTest
 import SwiftUI
 @testable import SharkPowerV2
 
-@MainActor
 final class HomeViewModelTests: XCTestCase {
 
+    @MainActor
     func testInitialDashboardDefaults() {
         let vm = HomeViewModel()
         XCTAssertEqual(vm.selectedMode, .forward)
@@ -19,6 +19,7 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertGreaterThan(vm.parameters.brightness, 0.5)
     }
 
+    @MainActor
     func testLoadPresetUpdatesViewModelParameters() {
         let vm = HomeViewModel()
         vm.loadPreset(

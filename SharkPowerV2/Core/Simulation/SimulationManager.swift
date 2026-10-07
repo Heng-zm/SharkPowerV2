@@ -18,6 +18,7 @@ public final class SimulationManager: ObservableObject {
     @Published public private(set) var simulatedConnectionState: ConnectionState = .idle
     @Published public var shouldSimulateErrors: Bool = false
     @Published public private(set) var simulatedLogs: [String] = []
+    public var simulatedLatency: TimeInterval = 0.05
 
     private var heartbeatTimer: AnyCancellable?
 
@@ -33,7 +34,7 @@ public final class SimulationManager: ObservableObject {
         simulatedConnectionState = .scanning
         log("SIMULATION: Scanning for simulated Shark Power devices...")
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + simulatedLatency) { [weak self] in
             guard let self = self, self.isEnabled else { return }
             let device = self.simulatedDevice.toBLEDevice()
             onDeviceDiscovered(device)
@@ -55,7 +56,7 @@ public final class SimulationManager: ObservableObject {
         onStateChanged(simulatedConnectionState)
         log("SIMULATION: Connecting to \(simulatedDevice.name)...")
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + simulatedLatency) { [weak self] in
             guard let self = self else { return }
             if self.shouldSimulateErrors {
                 self.simulatedConnectionState = .failed(reason: "Simulated peripheral timeout")
@@ -89,7 +90,7 @@ public final class SimulationManager: ObservableObject {
 
         log("SIMULATION: Emulating Apply command dispatch...")
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + simulatedLatency) { [weak self] in
             guard let self = self else { return }
             if self.shouldSimulateErrors {
                 let err = NSError(domain: "SharkPower.Simulation", code: 500, userInfo: [NSLocalizedDescriptionKey: "Simulated hardware NACK"])

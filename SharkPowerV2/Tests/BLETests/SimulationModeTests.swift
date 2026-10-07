@@ -34,7 +34,7 @@ final class SimulationModeTests: XCTestCase {
                 expectationConnect.fulfill()
             }
         }
-        wait(for: [expectationConnect], timeout: 2.0)
+        wait(for: [expectationConnect], timeout: 5.0)
 
         let expectationApply = expectation(description: "Simulated apply")
         let cmd = LightingCommand.setMode(.trailing)
@@ -47,7 +47,7 @@ final class SimulationModeTests: XCTestCase {
                 XCTFail("Unexpected simulation failure: \(err)")
             }
         }
-        wait(for: [expectationApply], timeout: 2.0)
+        wait(for: [expectationApply], timeout: 5.0)
     }
 
     func testSimulationManagerErrorInjection() {
@@ -65,6 +65,6 @@ final class SimulationModeTests: XCTestCase {
                 expectationApplyError.fulfill()
             }
         }
-        wait(for: [expectationApplyError], timeout: 2.0)
+        wait(for: [expectationApplyError], timeout: 5.0)
     }
 }

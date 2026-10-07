@@ -39,6 +39,8 @@ xcodebuild build \
     -scheme "$SCHEME" \
     -configuration "$CONFIGURATION" \
     -destination "$DESTINATION" \
-    CODE_SIGNING_ALLOWED=NO
+    CODE_SIGNING_ALLOWED=NO \
+    CODE_SIGNING_REQUIRED=NO \
+    CODE_SIGN_IDENTITY=""
 
 echo "✅ Build completed successfully."

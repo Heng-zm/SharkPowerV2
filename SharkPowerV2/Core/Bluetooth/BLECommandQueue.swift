@@ -92,23 +92,11 @@ public actor BLECommandQueue {
     }
 
     private func executeWithTimeout(command: QueuedCommand, timeout: TimeInterval) async throws {
-        try await withThrowingTaskGroup(of: Void.self) { group in
-            group.addTask {
-                guard let client = self.gattClient else { return }
-                try await client.write(
-                    data: command.data,
-                    characteristicUUID: command.characteristicUUID,
-                    responseNeeded: command.requiresResponse
-                )
-            }
-
-            group.addTask {
-                try await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
-                throw NSError(domain: "SharkPower.Queue", code: 408, userInfo: [NSLocalizedDescriptionKey: "Command dispatch timed out"])
-            }
-
-            try await group.next()
-            group.cancelAll()
-        }
+        guard let client = self.gattClient else { return }
+        try await client.write(
+            data: command.data,
+            characteristicUUID: command.characteristicUUID,
+            responseNeeded: command.requiresResponse
+        )
     }
 }

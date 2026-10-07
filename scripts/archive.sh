@@ -35,7 +35,9 @@ xcodebuild archive \
     -configuration "$CONFIGURATION" \
     -destination "generic/platform=iOS" \
     -archivePath "$ARCHIVE_PATH" \
-    CODE_SIGNING_ALLOWED=NO
+    CODE_SIGNING_ALLOWED=NO \
+    CODE_SIGNING_REQUIRED=NO \
+    CODE_SIGN_IDENTITY=""
 
 if [[ -d "$ARCHIVE_PATH" ]]; then
     echo "✅ Archive successfully created at $ARCHIVE_PATH"
