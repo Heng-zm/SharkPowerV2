@@ -113,7 +113,7 @@ public struct SettingsView: View {
                         HStack {
                             Text("Version")
                             Spacer()
-                            Text("1.0.0 (Build 1)")
+                            Text("1.0.5 (Build 5)")
                                 .font(SharkTypography.telemetryMono)
                                 .foregroundStyle(SharkTheme.textSecondary)
                         }
