@@ -12,6 +12,7 @@ import Combine
 public final class DevicesViewModel: ObservableObject {
     @Published public private(set) var discoveredDevices: [BLEDevice] = []
     @Published public private(set) var connectionState: ConnectionState = .idle
+    @Published public private(set) var isScanning: Bool = false
     @Published public var isSimulationEnabled: Bool = false
     @Published public var selectedDeviceForDetails: BLEDevice?
 
@@ -31,10 +32,15 @@ public final class DevicesViewModel: ObservableObject {
         device.$connectionState
             .receive(on: DispatchQueue.main)
             .assign(to: &$connectionState)
-    }
 
-    public var isScanning: Bool {
-        device.scanner.isScanning
+        device.scanner.$isScanning
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$isScanning)
+
+        device.scanner.$bluetoothState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in self?.objectWillChange.send() }
+            .store(in: &cancellables)
     }
 
     public var isBluetoothPoweredOff: Bool {

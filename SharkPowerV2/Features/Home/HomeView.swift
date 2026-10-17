@@ -201,7 +201,7 @@ public struct HomeView: View {
                 }
                 .scrollIndicators(.hidden)
             }
-            .navigationBarHidden(true)
+            .toolbar(.hidden, for: .navigationBar)
             .sheet(isPresented: $viewModel.showColorPicker) {
                 ColorPickerSheet(selectedColor: $viewModel.draftState.parameters.color)
             }

@@ -136,41 +136,4 @@ public struct SettingsView: View {
             }
         }
     }
-
-    private var logsConsoleSheet: some View {
-        NavigationStack {
-            ZStack {
-                LiquidAmbientBackground(accentColor: SharkTheme.neonCyan)
-
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 4) {
-                        ForEach(viewModel.eventLogs.indices, id: \.self) { idx in
-                            Text(viewModel.eventLogs[idx])
-                                .font(SharkTypography.telemetryMono)
-                                .foregroundStyle(SharkTheme.textSecondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }
-                    .padding(SharkSpacing.md)
-                }
-            }
-            .navigationTitle("Diagnostic Console")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    ShareLink(item: viewModel.eventLogs.joined(separator: "\n")) {
-                        Image(systemName: "square.and.arrow.up")
-                            .foregroundStyle(SharkTheme.neonCyan)
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Close") {
-                        showLogsSheet = false
-                    }
-                    .foregroundStyle(SharkTheme.neonCyan)
-                }
-            }
-        }
-        .presentationDetents([.medium, .large])
-    }
 }

@@ -48,8 +48,8 @@ public struct GlowSlider: View {
 
             GeometryReader { proxy in
                 let totalWidth = proxy.size.width
-                let clampedValue = max(0.0, min(1.0, value))
-                let activeWidth = totalWidth * clampedValue
+                let clampedValue = value.isNaN ? 0.0 : max(0.0, min(1.0, value))
+                let activeWidth = totalWidth > 0 ? (totalWidth * clampedValue) : 0
                 let thumbDiameter: CGFloat = 24
 
                 ZStack(alignment: .leading) {
@@ -137,7 +137,7 @@ public struct GlowSlider: View {
                     }
                     .scaleEffect(isDragging ? 1.15 : 1.0)
                     .animation(.spring(response: 0.25, dampingFraction: 0.65), value: isDragging)
-                    .offset(x: max(0, min(totalWidth - thumbDiameter, activeWidth - (thumbDiameter / 2.0))))
+                    .offset(x: max(0, min(max(0, totalWidth - thumbDiameter), activeWidth - (thumbDiameter / 2.0))))
                     .shadow(color: Color.black.opacity(0.4), radius: 4, x: 0, y: 2)
                 }
                 .frame(height: 28)
@@ -145,6 +145,7 @@ public struct GlowSlider: View {
                 .gesture(
                     DragGesture(minimumDistance: 0)
                         .onChanged { gesture in
+                            guard totalWidth > 0 else { return }
                             isDragging = true
                             let progress = max(0.0, min(1.0, gesture.location.x / totalWidth))
                             value = progress
@@ -163,6 +164,21 @@ public struct GlowSlider: View {
                 )
             }
             .frame(height: 28)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(title)
+            .accessibilityValue(valueFormatter(value))
+            .accessibilityAdjustableAction { direction in
+                switch direction {
+                case .increment:
+                    value = min(1.0, value + 0.05)
+                    Haptics.shared.selectionChanged()
+                case .decrement:
+                    value = max(0.0, value - 0.05)
+                    Haptics.shared.selectionChanged()
+                @unknown default:
+                    break
+                }
+            }
         }
     }
 }

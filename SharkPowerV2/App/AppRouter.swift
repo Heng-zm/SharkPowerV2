@@ -16,6 +16,18 @@ public enum AppTab: Hashable {
 
 public struct AppRouter: View {
     @State private var selectedTab: AppTab = .home
+    @AppStorage("appearanceMode") private var appearanceMode: String = "Dark"
+
+    private var preferredColorScheme: ColorScheme? {
+        switch appearanceMode {
+        case "Light":
+            return .light
+        case "Dark":
+            return .dark
+        default:
+            return nil // System theme
+        }
+    }
 
     public init() {
         let appearance = UITabBarAppearance()
@@ -67,6 +79,6 @@ public struct AppRouter: View {
                 .tag(AppTab.settings)
         }
         .tint(SharkTheme.neonCyan)
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(preferredColorScheme)
     }
 }

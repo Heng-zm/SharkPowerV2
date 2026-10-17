@@ -36,23 +36,26 @@ public final class HomeViewModel: ObservableObject {
     @Published public var showSavePresetSheet: Bool = false
     @Published public var presetNameInput: String = ""
 
+    @Published public private(set) var connectionState: ConnectionState = .idle
+
     private let device: SharkPowerDevice
     private var cancellables = Set<AnyCancellable>()
 
     public init(device: SharkPowerDevice = .shared) {
         self.device = device
-    }
+        self.connectionState = device.connectionState
 
-    public var connectionState: ConnectionState {
-        device.connectionState
+        device.$connectionState
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$connectionState)
     }
 
     public var isConnected: Bool {
-        device.connectionState.isConnected
+        connectionState.isConnected
     }
 
     public var deviceName: String {
-        if case .connected(let name) = device.connectionState {
+        if case .connected(let name) = connectionState {
             return name
         }
         return "Not Connected"

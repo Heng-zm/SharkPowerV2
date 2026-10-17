@@ -69,6 +69,7 @@ public typealias LiquidGlassCard<Content: View> = AutomotiveCard<Content>
 // MARK: - Dynamic Living Liquid Ambient Background
 public struct LiquidAmbientBackground: View {
     public let accentColor: Color?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var auraPulse: Bool = false
 
     public init(accentColor: Color? = nil) {
@@ -125,7 +126,9 @@ public struct LiquidAmbientBackground: View {
                 .offset(x: auraPulse ? -140 : -100, y: auraPulse ? 240 : 280)
                 .blur(radius: 60)
         }
+        .allowsHitTesting(false)
         .onAppear {
+            guard !reduceMotion else { return }
             withAnimation(.easeInOut(duration: 5.5).repeatForever(autoreverses: true)) {
                 auraPulse.toggle()
             }

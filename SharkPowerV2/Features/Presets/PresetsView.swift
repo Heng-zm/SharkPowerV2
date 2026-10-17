@@ -140,7 +140,18 @@ public struct PresetsView: View {
                     .font(SharkTypography.caption)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 7)
-                    .background(Capsule().fill(preset.color))
+                    .background(
+                        LinearGradient(
+                            colors: [preset.color, preset.color.opacity(0.85)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule().stroke(Color.white.opacity(0.4), lineWidth: 1)
+                    )
+                    .shadow(color: preset.color.opacity(0.35), radius: 6, x: 0, y: 2)
                     .foregroundStyle(SharkTheme.backgroundPrimary)
                 }
             }
