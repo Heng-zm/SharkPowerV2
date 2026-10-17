@@ -16,7 +16,7 @@ public struct DevicesView: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: SharkTheme.neonCyan)
 
                 VStack(spacing: 0) {
                     if viewModel.isBluetoothPoweredOff {
@@ -145,7 +145,18 @@ public struct DevicesView: View {
                     .font(SharkTypography.subheadline)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
-                    .background(Capsule().fill(SharkTheme.neonCyan))
+                    .background(
+                        LinearGradient(
+                            colors: [SharkTheme.neonCyan, SharkTheme.neonCyan.opacity(0.85)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule().stroke(Color.white.opacity(0.45), lineWidth: 1)
+                    )
+                    .shadow(color: SharkTheme.neonCyan.opacity(0.35), radius: 6, x: 0, y: 2)
                     .foregroundStyle(SharkTheme.backgroundPrimary)
                 }
 
@@ -176,8 +187,13 @@ public struct DevicesView: View {
         HStack(spacing: 3) {
             ForEach(0..<10) { index in
                 let active = Double(index) / 10.0 < strength
-                RoundedRectangle(cornerRadius: 1.5)
-                    .fill(active ? SharkTheme.neonCyan : SharkTheme.backgroundTertiary)
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(active ? SharkTheme.neonCyan : SharkTheme.glassSurfaceElevated)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 2)
+                            .stroke(active ? Color.white.opacity(0.3) : Color.white.opacity(0.05), lineWidth: 0.5)
+                    )
+                    .shadow(color: active ? SharkTheme.neonCyan.opacity(0.6) : Color.clear, radius: 4, x: 0, y: 0)
                     .frame(width: 8, height: 12)
             }
         }

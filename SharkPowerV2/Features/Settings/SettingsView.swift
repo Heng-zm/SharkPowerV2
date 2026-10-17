@@ -16,7 +16,7 @@ public struct SettingsView: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: SharkTheme.neonCyan)
 
                 List {
                     // MARK: - Device Section
@@ -37,7 +37,7 @@ public struct SettingsView: View {
                             }
                         }
                     }
-                    .listRowBackground(SharkTheme.backgroundSecondary)
+                    .listRowBackground(SharkTheme.glassSurfaceElevated)
 
                     // MARK: - Appearance Section
                     Section("Appearance") {
@@ -48,7 +48,7 @@ public struct SettingsView: View {
                         }
                         .pickerStyle(.menu)
                     }
-                    .listRowBackground(SharkTheme.backgroundSecondary)
+                    .listRowBackground(SharkTheme.glassSurfaceElevated)
 
                     // MARK: - Animation & Feedback
                     Section("Engine & Haptics") {
@@ -58,7 +58,7 @@ public struct SettingsView: View {
                         Toggle("Haptic Feedback", isOn: $viewModel.hapticFeedbackEnabled)
                             .tint(SharkTheme.neonCyan)
                     }
-                    .listRowBackground(SharkTheme.backgroundSecondary)
+                    .listRowBackground(SharkTheme.glassSurfaceElevated)
 
                     // MARK: - Diagnostics & GATT Section
                     Section("Diagnostics & Verification") {
@@ -99,7 +99,7 @@ public struct SettingsView: View {
                             }
                         }
                     }
-                    .listRowBackground(SharkTheme.backgroundSecondary)
+                    .listRowBackground(SharkTheme.glassSurfaceElevated)
 
                     // MARK: - About Section
                     Section("About") {
@@ -125,7 +125,7 @@ public struct SettingsView: View {
                                 .foregroundStyle(SharkTheme.textSecondary)
                         }
                     }
-                    .listRowBackground(SharkTheme.backgroundSecondary)
+                    .listRowBackground(SharkTheme.glassSurfaceElevated)
                 }
                 .scrollContentBackground(.hidden)
             }
@@ -140,7 +140,7 @@ public struct SettingsView: View {
     private var logsConsoleSheet: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: SharkTheme.neonCyan)
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 4) {

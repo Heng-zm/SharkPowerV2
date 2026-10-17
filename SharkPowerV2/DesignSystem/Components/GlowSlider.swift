@@ -2,7 +2,7 @@
 //  GlowSlider.swift
 //  SharkPowerV2
 //
-//  Automotive illuminated control slider with real-time glow and tactile drag.
+//  Native iOS 26 Liquid Glass control slider with luminous liquid fill and prismatic optic lens thumb.
 //
 
 import SwiftUI
@@ -43,48 +43,104 @@ public struct GlowSlider: View {
                 Text(valueFormatter(value))
                     .font(SharkTypography.telemetryMono)
                     .foregroundStyle(tintColor)
+                    .shadow(color: tintColor.opacity(0.5), radius: 6, x: 0, y: 0)
             }
 
             GeometryReader { proxy in
                 let totalWidth = proxy.size.width
                 let clampedValue = max(0.0, min(1.0, value))
                 let activeWidth = totalWidth * clampedValue
+                let thumbDiameter: CGFloat = 24
 
                 ZStack(alignment: .leading) {
-                    // Track Background
-                    RoundedRectangle(cornerRadius: 6, style: .continuous)
-                        .fill(SharkTheme.backgroundTertiary)
-                        .frame(height: 12)
+                    // 1. Frosted Glass Track Background
+                    RoundedRectangle(cornerRadius: 7, style: .continuous)
+                        .fill(.ultraThinMaterial)
+                        .frame(height: 14)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .stroke(SharkTheme.borderSubtle, lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                .fill(SharkTheme.glassSurfaceBase)
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                .stroke(
+                                    LinearGradient(
+                                        colors: [Color.white.opacity(0.25), Color.black.opacity(0.4)],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    ),
+                                    lineWidth: 1
+                                )
                         )
 
-                    // Active Glow Track
-                    RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    // 2. Active Liquid Illumination Conduit
+                    RoundedRectangle(cornerRadius: 7, style: .continuous)
                         .fill(
                             LinearGradient(
-                                colors: [tintColor.opacity(0.7), tintColor],
+                                colors: [tintColor.opacity(0.70), tintColor],
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
                         )
-                        .frame(width: max(12, activeWidth), height: 12)
-                        .shadow(color: tintColor.opacity(0.4), radius: 6, x: 0, y: 0)
-
-                    // Custom Automotive Thumb
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: 22, height: 22)
-                        .shadow(color: Color.black.opacity(0.5), radius: 3, x: 0, y: 2)
-                        .shadow(color: tintColor.opacity(0.6), radius: 6, x: 0, y: 0)
+                        .frame(width: max(14, activeWidth), height: 14)
                         .overlay(
-                            Circle()
-                                .stroke(tintColor, lineWidth: 2)
+                            // Liquid Specular Highlight Line
+                            VStack {
+                                RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [Color.white.opacity(0.40), Color.white.opacity(0.0)],
+                                            startPoint: .top,
+                                            endPoint: .bottom
+                                        )
+                                    )
+                                    .frame(height: 6)
+                                Spacer()
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
                         )
-                        .offset(x: max(0, min(totalWidth - 22, activeWidth - 11)))
+                        .shadow(color: tintColor.opacity(0.55), radius: 8, x: 0, y: 0)
+
+                    // 3. 3D Liquid Glass Optic Lens Thumb
+                    ZStack {
+                        // Ambient Caustic Halo
+                        Circle()
+                            .fill(tintColor.opacity(isDragging ? 0.8 : 0.5))
+                            .frame(width: thumbDiameter + 10, height: thumbDiameter + 10)
+                            .blur(radius: 6)
+
+                        // Translucent Glass Lens Outer Body
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width: thumbDiameter, height: thumbDiameter)
+                            .overlay(
+                                Circle()
+                                    .fill(SharkTheme.glassSurfaceElevated)
+                            )
+                            .overlay(
+                                Circle()
+                                    .stroke(
+                                        LinearGradient(
+                                            colors: [Color.white, tintColor.opacity(0.8)],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 2
+                                    )
+                            )
+
+                        // Pure White Optic Core Bead
+                        Circle()
+                            .fill(Color.white)
+                            .frame(width: 12, height: 12)
+                            .shadow(color: Color.black.opacity(0.35), radius: 2, x: 0, y: 1)
+                    }
+                    .scaleEffect(isDragging ? 1.15 : 1.0)
+                    .animation(.spring(response: 0.25, dampingFraction: 0.65), value: isDragging)
+                    .offset(x: max(0, min(totalWidth - thumbDiameter, activeWidth - (thumbDiameter / 2.0))))
+                    .shadow(color: Color.black.opacity(0.4), radius: 4, x: 0, y: 2)
                 }
-                .frame(height: 24)
+                .frame(height: 28)
                 .contentShape(Rectangle())
                 .gesture(
                     DragGesture(minimumDistance: 0)
@@ -93,7 +149,7 @@ public struct GlowSlider: View {
                             let progress = max(0.0, min(1.0, gesture.location.x / totalWidth))
                             value = progress
 
-                            // Provide subtle haptic feedback every 10%
+                            // Provide subtle tactile tick every 10%
                             let currentTick = Int(progress * 10)
                             if currentTick != lastFeedbackTick {
                                 lastFeedbackTick = currentTick
@@ -106,7 +162,7 @@ public struct GlowSlider: View {
                         }
                 )
             }
-            .frame(height: 24)
+            .frame(height: 28)
         }
     }
 }

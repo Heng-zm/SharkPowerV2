@@ -18,7 +18,7 @@ public struct PresetsView: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: SharkTheme.neonCyan)
 
                 ScrollView {
                     VStack(spacing: SharkSpacing.md) {
@@ -66,6 +66,7 @@ public struct PresetsView: View {
                         .fill(preset.color)
                         .frame(width: 14, height: 14)
                         .overlay(Circle().stroke(Color.white.opacity(0.4), lineWidth: 1))
+                        .shadow(color: preset.color.opacity(0.6), radius: 4, x: 0, y: 0)
 
                     Text(preset.name)
                         .font(SharkTypography.headline)
@@ -75,9 +76,22 @@ public struct PresetsView: View {
 
                     Text(preset.mode.uppercased())
                         .font(SharkTypography.badge)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Capsule().fill(preset.color.opacity(0.15)))
+                        .padding(.horizontal, 9)
+                        .padding(.vertical, 5)
+                        .background(
+                            Capsule().fill(.ultraThinMaterial)
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(
+                                    LinearGradient(
+                                        colors: [Color.white.opacity(0.4), preset.color.opacity(0.4)],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    ),
+                                    lineWidth: 1
+                                )
+                        )
                         .foregroundStyle(preset.color)
                 }
 

@@ -36,7 +36,7 @@ public struct ColorPickerSheet: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundSecondary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: selectedColor)
 
                 VStack(spacing: SharkSpacing.lg) {
                     // Header Color Banner Preview
@@ -44,8 +44,8 @@ public struct ColorPickerSheet: View {
                         Circle()
                             .fill(selectedColor)
                             .frame(width: 44, height: 44)
-                            .overlay(Circle().stroke(Color.white.opacity(0.3), lineWidth: 2))
-                            .shadow(color: selectedColor.opacity(0.5), radius: 10, x: 0, y: 0)
+                            .overlay(Circle().stroke(Color.white.opacity(0.4), lineWidth: 2))
+                            .shadow(color: selectedColor.opacity(0.6), radius: 10, x: 0, y: 0)
 
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Active Color Beam")
@@ -55,6 +55,7 @@ public struct ColorPickerSheet: View {
                             Text(selectedColor.toHex())
                                 .font(SharkTypography.telemetryMono)
                                 .foregroundStyle(selectedColor)
+                                .shadow(color: selectedColor.opacity(0.5), radius: 6, x: 0, y: 0)
                         }
 
                         Spacer()
@@ -64,10 +65,7 @@ public struct ColorPickerSheet: View {
                             .scaleEffect(1.2)
                     }
                     .padding(SharkSpacing.md)
-                    .background(
-                        RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous)
-                            .fill(SharkTheme.backgroundTertiary)
-                    )
+                    .liquidGlassSurface(cornerRadius: SharkSpacing.Radius.glassCard, glowColor: selectedColor)
 
                     // Curated Automotive Palette Grid
                     VStack(alignment: .leading, spacing: SharkSpacing.sm) {

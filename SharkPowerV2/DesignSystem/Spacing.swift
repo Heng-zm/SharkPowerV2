@@ -22,6 +22,15 @@ public enum SharkSpacing {
         public static let small: CGFloat = 8
         public static let medium: CGFloat = 14
         public static let large: CGFloat = 20
+        public static let glassCard: CGFloat = 22
+        public static let glassButton: CGFloat = 16
         public static let pill: CGFloat = 999
+    }
+
+    public enum Glass {
+        public static let borderWidth: CGFloat = 1.2
+        public static let subtleBorderWidth: CGFloat = 0.8
+        public static let causticGlowRadius: CGFloat = 22
+        public static let groundShadowRadius: CGFloat = 14
     }
 }

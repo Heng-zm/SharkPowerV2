@@ -16,7 +16,7 @@ public struct DiagnosticsView: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: SharkTheme.cyberAmber)
 
                 ScrollView {
                     VStack(spacing: SharkSpacing.md) {

@@ -38,6 +38,42 @@ public enum SharkTheme {
     public static let statusDisconnected = Color(red: 0.55, green: 0.58, blue: 0.65)
     public static let statusWarning = Color(red: 1.0, green: 0.70, blue: 0.10)
     public static let statusError = Color(red: 1.0, green: 0.25, blue: 0.25)
+
+    // MARK: - iOS 26 Liquid Glass Design System Tokens
+    public static let glassSurfaceBase = Color(red: 0.07, green: 0.09, blue: 0.14).opacity(0.65)       // Translucent obsidian glass
+    public static let glassSurfaceElevated = Color(red: 0.12, green: 0.16, blue: 0.23).opacity(0.72)   // Elevated translucent glass
+    public static let glassSurfaceHighlight = Color.white.opacity(0.12)
+    public static let glassBackdropMaterial = Color(red: 0.05, green: 0.07, blue: 0.11).opacity(0.80)
+
+    // Liquid Ambient Glows & Caustics
+    public static let liquidCyanAura = Color(red: 0.0, green: 0.88, blue: 1.0).opacity(0.20)
+    public static let liquidVioletAura = Color(red: 0.55, green: 0.22, blue: 1.0).opacity(0.16)
+    public static let liquidBlueAura = Color(red: 0.10, green: 0.45, blue: 1.0).opacity(0.18)
+    public static let liquidAmberAura = Color(red: 1.0, green: 0.65, blue: 0.0).opacity(0.18)
+
+    // Specular Rim & Refraction Gradients
+    public static func glassSpecularBorder(glowColor: Color? = nil) -> LinearGradient {
+        LinearGradient(
+            colors: [
+                Color.white.opacity(0.42),
+                (glowColor ?? SharkTheme.neonCyan).opacity(0.35),
+                Color.white.opacity(0.10),
+                Color.black.opacity(0.25)
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    public static let glassGlossSheen = LinearGradient(
+        colors: [
+            Color.white.opacity(0.15),
+            Color.white.opacity(0.04),
+            Color.clear
+        ],
+        startPoint: .top,
+        endPoint: .center
+    )
 }
 
 // MARK: - Color Hex Extensions

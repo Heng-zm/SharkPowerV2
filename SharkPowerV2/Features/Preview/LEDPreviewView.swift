@@ -86,21 +86,29 @@ public struct LEDPreviewView: View {
             .padding(.bottom, SharkSpacing.xs)
         }
         .background(
-            RoundedRectangle(cornerRadius: SharkSpacing.Radius.large, style: .continuous)
-                .fill(SharkTheme.backgroundSecondary)
-                .overlay(
-                    RoundedRectangle(cornerRadius: SharkSpacing.Radius.large, style: .continuous)
-                        .stroke(
-                            LinearGradient(
-                                colors: [parameters.color.opacity(0.3), SharkTheme.borderSubtle],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1
-                        )
-                )
-                .shadow(color: parameters.color.opacity(0.12), radius: 16, x: 0, y: 6)
+            ZStack {
+                RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassCard, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassCard, style: .continuous)
+                    .fill(SharkTheme.glassSurfaceBase)
+                VStack {
+                    RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassCard, style: .continuous)
+                        .fill(SharkTheme.glassGlossSheen)
+                        .frame(height: 44)
+                    Spacer()
+                }
+                .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassCard, style: .continuous))
+            }
         )
+        .overlay(
+            RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassCard, style: .continuous)
+                .stroke(
+                    SharkTheme.glassSpecularBorder(glowColor: parameters.color),
+                    lineWidth: SharkSpacing.Glass.borderWidth
+                )
+        )
+        .shadow(color: Color.black.opacity(0.45), radius: SharkSpacing.Glass.groundShadowRadius, x: 0, y: 7)
+        .shadow(color: parameters.color.opacity(0.25), radius: SharkSpacing.Glass.causticGlowRadius, x: 0, y: 3)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Sequential LED preview: Mode \(mode.rawValue), Brightness \(Int(parameters.brightness * 100)) percent, Speed \(Int(parameters.speed * 100)) percent")
     }

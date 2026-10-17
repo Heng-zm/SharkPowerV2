@@ -2,7 +2,7 @@
 //  ActionButton.swift
 //  SharkPowerV2
 //
-//  High-impact automotive action button with haptic feedback & state animations.
+//  Native iOS 26 Liquid Glass high-impact action control with tactile micro-spring physics.
 //
 
 import SwiftUI
@@ -57,19 +57,35 @@ public struct ActionButton: View {
                     .font(SharkTypography.headline)
             }
             .frame(maxWidth: .infinity)
-            .frame(height: 50)
+            .frame(height: 52)
             .foregroundStyle(foregroundColor)
             .background(backgroundView)
-            .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassButton, style: .continuous))
             .overlay(
-                RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous)
-                    .stroke(borderStrokeColor, lineWidth: 1)
+                // Top Specular Glass Sheen
+                VStack {
+                    RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassButton, style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [Color.white.opacity(0.35), Color.white.opacity(0.06), Color.clear],
+                                startPoint: .top,
+                                endPoint: .center
+                            )
+                        )
+                        .frame(height: 24)
+                    Spacer()
+                }
+                .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassButton, style: .continuous))
             )
-            .shadow(color: shadowColor, radius: 10, x: 0, y: 4)
+            .overlay(
+                RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassButton, style: .continuous)
+                    .stroke(borderStrokeGradient, lineWidth: SharkSpacing.Glass.borderWidth)
+            )
+            .shadow(color: shadowColor, radius: 12, x: 0, y: 5)
             .opacity(isEnabled ? 1.0 : 0.45)
         }
         .disabled(!isEnabled || isLoading)
-        .buttonStyle(ScaleButtonStyle())
+        .buttonStyle(LiquidScaleButtonStyle())
     }
 
     private var foregroundColor: Color {
@@ -77,7 +93,7 @@ public struct ActionButton: View {
         case .primary:
             return SharkTheme.backgroundPrimary
         case .secondary:
-            return SharkTheme.textPrimary
+            return Color.white
         case .danger:
             return Color.white
         }
@@ -93,43 +109,57 @@ public struct ActionButton: View {
                 endPoint: .bottom
             )
         case .secondary:
-            SharkTheme.backgroundTertiary
+            ZStack {
+                RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassButton, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                RoundedRectangle(cornerRadius: SharkSpacing.Radius.glassButton, style: .continuous)
+                    .fill(SharkTheme.glassSurfaceElevated)
+            }
         case .danger:
             LinearGradient(
-                colors: [SharkTheme.daytonaRed, SharkTheme.daytonaRed.opacity(0.8)],
+                colors: [SharkTheme.daytonaRed, SharkTheme.daytonaRed.opacity(0.85)],
                 startPoint: .top,
                 endPoint: .bottom
             )
         }
     }
 
-    private var borderStrokeColor: Color {
+    private var borderStrokeGradient: LinearGradient {
         switch style {
-        case .primary:
-            return Color.white.opacity(0.2)
+        case .primary(let tint):
+            return LinearGradient(
+                colors: [Color.white.opacity(0.55), tint.opacity(0.4), Color.white.opacity(0.15)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         case .secondary:
-            return SharkTheme.borderGlow
+            return SharkTheme.glassSpecularBorder()
         case .danger:
-            return Color.white.opacity(0.2)
+            return LinearGradient(
+                colors: [Color.white.opacity(0.5), SharkTheme.daytonaRed.opacity(0.5), Color.white.opacity(0.15)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         }
     }
 
     private var shadowColor: Color {
         switch style {
         case .primary(let tint):
-            return tint.opacity(0.3)
+            return tint.opacity(0.38)
         case .secondary:
-            return Color.black.opacity(0.3)
+            return Color.black.opacity(0.35)
         case .danger:
-            return SharkTheme.daytonaRed.opacity(0.4)
+            return SharkTheme.daytonaRed.opacity(0.45)
         }
     }
 }
 
-private struct ScaleButtonStyle: ButtonStyle {
+private struct LiquidScaleButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
-            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1.0)
+            .brightness(configuration.isPressed ? 0.05 : 0.0)
+            .animation(.spring(response: 0.22, dampingFraction: 0.65), value: configuration.isPressed)
     }
 }

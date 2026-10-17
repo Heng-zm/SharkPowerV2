@@ -20,7 +20,7 @@ public struct ModeSelectionSheet: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundSecondary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: parameters.color)
 
                 ScrollView {
                     VStack(spacing: SharkSpacing.md) {
@@ -29,7 +29,7 @@ public struct ModeSelectionSheet: View {
 
                             Button(action: {
                                 Haptics.shared.selectionChanged()
-                                withAnimation(.smooth) {
+                                withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                                     selectedMode = mode
                                 }
                             }) {
@@ -49,6 +49,7 @@ public struct ModeSelectionSheet: View {
                                             Image(systemName: "checkmark.circle.fill")
                                                 .font(.system(size: 18))
                                                 .foregroundStyle(parameters.color)
+                                                .shadow(color: parameters.color.opacity(0.6), radius: 6, x: 0, y: 0)
                                         }
                                     }
 
@@ -67,13 +68,9 @@ public struct ModeSelectionSheet: View {
                                     .padding(.top, 4)
                                 }
                                 .padding(SharkSpacing.md)
-                                .background(
-                                    RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous)
-                                        .fill(isSelected ? SharkTheme.backgroundTertiary : SharkTheme.backgroundPrimary)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous)
-                                                .stroke(isSelected ? parameters.color.opacity(0.6) : SharkTheme.borderSubtle, lineWidth: 1.5)
-                                        )
+                                .liquidGlassSurface(
+                                    cornerRadius: SharkSpacing.Radius.glassCard,
+                                    glowColor: isSelected ? parameters.color : nil
                                 )
                             }
                             .buttonStyle(.plain)

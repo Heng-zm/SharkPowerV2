@@ -29,7 +29,7 @@ public struct FullScreenPreviewView: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: parameters.color)
 
                 VStack(spacing: SharkSpacing.xl) {
                     // Top Telemetry Header
@@ -42,6 +42,7 @@ public struct FullScreenPreviewView: View {
                         Text(mode.rawValue.uppercased())
                             .font(SharkTypography.displayTitle)
                             .foregroundStyle(parameters.color)
+                            .shadow(color: parameters.color.opacity(0.6), radius: 10, x: 0, y: 0)
 
                         Text(mode.description)
                             .font(SharkTypography.caption)
@@ -82,9 +83,10 @@ public struct FullScreenPreviewView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 8) {
                                     ForEach(LEDMode.allCases) { m in
+                                        let isSelected = (mode == m)
                                         Button(action: {
                                             Haptics.shared.selectionChanged()
-                                            withAnimation(.smooth) {
+                                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                                                 mode = m
                                             }
                                         }) {
@@ -96,11 +98,32 @@ public struct FullScreenPreviewView: View {
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 8)
                                             .background(
-                                                Capsule()
-                                                    .fill(mode == m ? parameters.color : SharkTheme.backgroundTertiary)
+                                                ZStack {
+                                                    if isSelected {
+                                                        LinearGradient(
+                                                            colors: [parameters.color, parameters.color.opacity(0.85)],
+                                                            startPoint: .top,
+                                                            endPoint: .bottom
+                                                        )
+                                                    } else {
+                                                        Capsule().fill(.ultraThinMaterial)
+                                                        Capsule().fill(SharkTheme.glassSurfaceBase)
+                                                    }
+                                                }
+                                                .clipShape(Capsule())
                                             )
-                                            .foregroundStyle(mode == m ? SharkTheme.backgroundPrimary : SharkTheme.textPrimary)
+                                            .overlay(
+                                                Capsule()
+                                                    .stroke(
+                                                        isSelected
+                                                            ? LinearGradient(colors: [Color.white.opacity(0.5), parameters.color], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                                            : SharkTheme.glassSpecularBorder(),
+                                                        lineWidth: 1
+                                                    )
+                                            )
+                                            .foregroundStyle(isSelected ? SharkTheme.backgroundPrimary : SharkTheme.textPrimary)
                                         }
+                                        .buttonStyle(.plain)
                                     }
                                 }
                             }

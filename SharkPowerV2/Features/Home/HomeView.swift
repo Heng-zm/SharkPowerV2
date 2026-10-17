@@ -17,7 +17,7 @@ public struct HomeView: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                SharkTheme.backgroundPrimary.ignoresSafeArea()
+                LiquidAmbientBackground(accentColor: viewModel.parameters.color)
 
                 ScrollView {
                     VStack(spacing: SharkSpacing.md) {
@@ -44,7 +44,7 @@ public struct HomeView: View {
                             )
                         }
                         .padding(.horizontal, SharkSpacing.md)
-                        .padding(.top, SharkSpacing.xxs)
+                        .padding(.top, SharkSpacing.xs)
 
                         // 1. HERO: Live Continuous Sequential LED Preview
                         LEDPreviewView(
@@ -80,7 +80,7 @@ public struct HomeView: View {
                                         let isSelected = viewModel.selectedMode == mode
                                         Button(action: {
                                             Haptics.shared.selectionChanged()
-                                            withAnimation(.smooth) {
+                                            withAnimation(.spring(response: 0.35, dampingFraction: 0.75)) {
                                                 viewModel.selectedMode = mode
                                             }
                                         }) {
@@ -92,15 +92,38 @@ public struct HomeView: View {
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 8)
                                             .background(
+                                                ZStack {
+                                                    if isSelected {
+                                                        LinearGradient(
+                                                            colors: [viewModel.parameters.color, viewModel.parameters.color.opacity(0.85)],
+                                                            startPoint: .top,
+                                                            endPoint: .bottom
+                                                        )
+                                                    } else {
+                                                        Capsule().fill(.ultraThinMaterial)
+                                                        Capsule().fill(SharkTheme.glassSurfaceBase)
+                                                    }
+                                                }
+                                                .clipShape(Capsule())
+                                            )
+                                            .overlay(
                                                 Capsule()
-                                                    .fill(isSelected ? viewModel.parameters.color : SharkTheme.backgroundSecondary)
-                                                    .overlay(
-                                                        Capsule()
-                                                            .stroke(isSelected ? Color.white.opacity(0.3) : SharkTheme.borderSubtle, lineWidth: 1)
+                                                    .stroke(
+                                                        isSelected
+                                                            ? LinearGradient(colors: [Color.white.opacity(0.55), viewModel.parameters.color], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                                            : SharkTheme.glassSpecularBorder(),
+                                                        lineWidth: 1
                                                     )
+                                            )
+                                            .shadow(
+                                                color: isSelected ? viewModel.parameters.color.opacity(0.35) : Color.black.opacity(0.2),
+                                                radius: isSelected ? 8 : 4,
+                                                x: 0,
+                                                y: 2
                                             )
                                             .foregroundStyle(isSelected ? SharkTheme.backgroundPrimary : SharkTheme.textPrimary)
                                         }
+                                        .buttonStyle(.plain)
                                     }
                                 }
                                 .padding(.horizontal, SharkSpacing.md)
@@ -129,7 +152,7 @@ public struct HomeView: View {
                         }
                         .padding(.horizontal, SharkSpacing.md)
 
-                        // 4. Action Controls: [ Customize / Color ] & [ APPLY TO DEVICE ]
+                        // 4. Action Controls: [ Customize / Color ] & [ Save Preset ]
                         VStack(spacing: SharkSpacing.sm) {
                             HStack(spacing: SharkSpacing.sm) {
                                 // Color / Customize Button
@@ -141,22 +164,18 @@ public struct HomeView: View {
                                         Circle()
                                             .fill(viewModel.parameters.color)
                                             .frame(width: 18, height: 18)
-                                            .overlay(Circle().stroke(Color.white.opacity(0.3), lineWidth: 1))
-                                            .shadow(color: viewModel.parameters.color.opacity(0.6), radius: 6, x: 0, y: 0)
+                                            .overlay(Circle().stroke(Color.white.opacity(0.5), lineWidth: 1.5))
+                                            .shadow(color: viewModel.parameters.color.opacity(0.7), radius: 6, x: 0, y: 0)
 
                                         Text("Beam Color")
                                             .font(SharkTypography.headline)
                                             .foregroundStyle(SharkTheme.textPrimary)
                                     }
                                     .frame(maxWidth: .infinity)
-                                    .frame(height: 48)
-                                    .background(SharkTheme.backgroundSecondary)
-                                    .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous)
-                                            .stroke(SharkTheme.borderSubtle, lineWidth: 1)
-                                    )
+                                    .frame(height: 50)
+                                    .liquidGlassSurface(cornerRadius: SharkSpacing.Radius.glassButton, glowColor: viewModel.parameters.color.opacity(0.3))
                                 }
+                                .buttonStyle(.plain)
 
                                 // Save Preset Button
                                 Button(action: {
@@ -167,14 +186,10 @@ public struct HomeView: View {
                                     Image(systemName: "bookmark.fill")
                                         .font(.system(size: 16))
                                         .foregroundStyle(SharkTheme.textPrimary)
-                                        .frame(width: 48, height: 48)
-                                        .background(SharkTheme.backgroundSecondary)
-                                        .clipShape(RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: SharkSpacing.Radius.medium, style: .continuous)
-                                                .stroke(SharkTheme.borderSubtle, lineWidth: 1)
-                                        )
+                                        .frame(width: 50, height: 50)
+                                        .liquidGlassSurface(cornerRadius: SharkSpacing.Radius.glassButton)
                                 }
+                                .buttonStyle(.plain)
                             }
 
                             // Primary Apply Button
